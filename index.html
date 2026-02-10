@@ -1,0 +1,3137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apperture Modern Fashion</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide"></script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #000000;
+            color: #FFFFFF;
+        }
+
+        .hero-bg {
+            background-image: url('https://images.unsplash.com/photo-1550963248-6b2f19202aa2?w=1934&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .bg-black-true {
+            background-color: #000000;
+        }
+
+        .bg-purple-accent {
+            background-color: #8A2BE2;
+        }
+
+        .hover\:bg-purple-accent-dark:hover {
+            background-color: #7B1FA2;
+        }
+
+        .text-purple-accent {
+            color: #8A2BE2;
+        }
+
+        .hover\:text-purple-accent:hover {
+            color: #8A2BE2;
+        }
+
+        .border-purple-accent {
+            border-color: #8A2BE2;
+        }
+
+        .shadow-purple-glow {
+            box-shadow: 0 0 15px rgba(138, 43, 226, 0.5);
+        }
+
+        .neon-border {
+            box-shadow: 0 0 10px #8A2BE2, 0 0 20px #8A2BE2, inset 0 0 10px #8A2BE2;
+            border-color: #A855F7;
+        }
+
+        .neon-text {
+            text-shadow: 0 0 5px #fff, 0 0 10px #8A2BE2, 0 0 15px #8A2BE2;
+        }
+
+        @keyframes neon-pulse {
+            0%, 100% { opacity: 1; filter: brightness(1); }
+            50% { opacity: 0.8; filter: brightness(1.2); }
+        }
+
+        .animate-neon {
+            animation: neon-pulse 1.5s infinite;
+        }
+
+        @keyframes magneticPulse {
+            0% {
+                box-shadow: 0 0 15px rgba(6, 182, 212, 0.6), 0 0 30px rgba(59, 130, 246, 0.4);
+                border-color: #22d3ee;
+            }
+
+            50% {
+                box-shadow: 0 0 25px rgba(6, 182, 212, 0.8), 0 0 50px rgba(59, 130, 246, 0.6);
+                border-color: #67e8f9;
+            }
+
+            100% {
+                box-shadow: 0 0 15px rgba(6, 182, 212, 0.6), 0 0 30px rgba(59, 130, 246, 0.4);
+                border-color: #22d3ee;
+            }
+        }
+
+        .magnetic-glow {
+            animation: magneticPulse 2s infinite;
+            border-width: 2px;
+            z-index: 10;
+        }
+
+        @keyframes gemPulse {
+            0% { box-shadow: 0 0 15px rgba(34, 197, 94, 0.6); border-color: #22c55e; }
+            50% { box-shadow: 0 0 25px rgba(34, 197, 94, 0.8); border-color: #4ade80; }
+            100% { box-shadow: 0 0 15px rgba(34, 197, 94, 0.6); border-color: #22c55e; }
+        }
+
+        .gem-boosted-glow {
+            animation: gemPulse 2s infinite;
+            border-width: 2px;
+            z-index: 10;
+        }
+
+        .modal {
+            transition: opacity 0.25s ease, visibility 0.25s ease;
+            visibility: hidden;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .modal.open {
+            visibility: visible;
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1a1a1a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #8A2BE2;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #7B1FA2;
+        }
+
+        .chat-bubble {
+            max-width: 75%;
+            padding: 10px 16px;
+            border-radius: 20px;
+            line-height: 1.5;
+            word-wrap: break-word;
+        }
+
+        .chat-bubble-sent {
+            background-color: #8A2BE2;
+            color: white;
+            align-self: flex-end;
+            border-bottom-right-radius: 4px;
+        }
+
+        .chat-bubble-received {
+            background-color: #374151;
+            color: white;
+            align-self: flex-start;
+            border-bottom-left-radius: 4px;
+        }
+
+        @keyframes modal-in {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .animate-modal-in {
+            animation: modal-in 0.3s ease-out forwards;
+        }
+    
+        /* Global Icon Sizing */
+        [data-lucide] {
+            width: 1.25rem;
+            height: 1.25rem;
+            display: inline-block;
+        }
+        .w-3.5[data-lucide] { width: 0.875rem; height: 0.875rem; }
+        .w-4[data-lucide] { width: 1rem; height: 1rem; }
+        .w-5[data-lucide] { width: 1.25rem; height: 1.25rem; }
+        .w-6[data-lucide] { width: 1.5rem; height: 1.5rem; }
+
+    
+        .special-3d-container {
+            perspective: 1000px;
+            transform-style: preserve-3d;
+        }
+        .special-3d-image {
+            transition: transform 0.1s ease-out;
+            filter: drop-shadow(0 20px 30px rgba(0,0,0,0.5));
+        }
+        .depth-layer {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background: linear-gradient(45deg, rgba(168, 85, 247, 0.1), transparent);
+            transform: translateZ(-20px);
+        }
+
+    
+        .ultra-3d-container {
+            perspective: 1500px;
+            transform-style: preserve-3d;
+            overflow: visible !important;
+        }
+        .ultra-3d-image {
+            transition: transform 0.15s ease-out, filter 0.5s ease;
+            filter: drop-shadow(0 30px 50px rgba(0,0,0,0.8));
+            transform-style: preserve-3d;
+        }
+        .ultra-depth-layer {
+            position: absolute;
+            inset: -20px;
+            pointer-events: none;
+            background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(168, 85, 247, 0.2), transparent 80%);
+            transform: translateZ(-50px);
+            z-index: 0;
+        }
+
+    </style>
+</head>
+
+<body class="bg-black-true text-white">
+
+    <!-- Header -->
+    <header class="bg-black-true shadow-md shadow-purple-glow sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="#" class="flex items-center space-x-3">
+                    <svg class="h-10 w-10 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2 L20 6 V18 L12 22 L4 18 V6 L12 2 Z" />
+                        <path d="M12 6 L8 10 H16 L12 6 Z" />
+                        <path d="M12 10 V16" />
+                        <line x1="9" y1="12" x2="15" y2="12" />
+                        <line x1="7" y1="14" x2="17" y2="14" />
+                        <line x1="7" y1="16" x2="17" y2="16" />
+                    </svg>
+                    <span class="text-2xl font-bold">Apperture</span>
+                    <span id="admin-badge"
+                        class="hidden ml-2 bg-red-600 text-white text-xs px-2 py-1 rounded font-bold uppercase tracking-wider">Admin</span>
+                </a>
+                <nav class="hidden md:flex items-center space-x-8">
+                    <button id="chat-nav-link"
+                        class="cursor-pointer hover:text-purple-accent transition duration-300">Chat</button>
+                    <a href="#" id="home-nav-link" class="hover:text-purple-accent transition duration-300">Home</a>
+                    <a href="#shop-section" id="shop-nav-link"
+                        class="cursor-pointer hover:text-purple-accent transition duration-300">Shop</a>
+                    <button id="profile-nav-link"
+                        class="cursor-pointer hover:text-purple-accent transition duration-300">Profile</button>
+                    <button id="sell-nav-link"
+                        class="cursor-pointer hover:text-purple-accent transition duration-300">Sell</button>
+                    <button id="about-nav-link"
+                        class="cursor-pointer hover:text-purple-accent transition duration-300">About</button>
+                </nav>
+                <!-- Quick Balance Bar -->
+                <div id="quick-balance" class="hidden lg:flex items-center space-x-3 px-4 py-1.5 bg-gray-800/80 rounded-full border border-gray-700/50 text-xs font-bold">
+                    <div class="flex items-center text-yellow-500" title="Stars"><i data-lucide="star" class="w-3.5 h-3.5 mr-1 fill-current"></i><span id="q-stars">0</span></div>
+                    <div class="flex items-center text-green-500" title="Gems"><i data-lucide="gem" class="w-3.5 h-3.5 mr-1"></i><span id="q-gems">0</span></div>
+                    <div class="flex items-center text-blue-500" title="Tickets"><i data-lucide="ticket" class="w-3.5 h-3.5 mr-1"></i><span id="q-tickets">0</span></div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <div class="flex items-center space-x-2">
+                        <div id="backend-status" class="w-2 h-2 rounded-full bg-red-500 animate-pulse" title="Backend Status"></div>
+                        <span class="text-[10px] text-gray-500 uppercase tracking-tighter hidden md:inline">Network</span>
+                    </div>
+                    
+                    <button id="chat-button" class="relative hover:text-purple-accent transition duration-300" title="Chats">
+                        <i data-lucide="message-circle"></i>
+                        <span id="chat-notification-count"
+                            class="absolute -top-2 -right-2 bg-blue-600 text-white text-[10px] rounded-full h-4 w-4 flex items-center justify-center hidden">0</span>
+                    </button>
+
+                    <button id="cart-button" class="relative hover:text-purple-accent transition duration-300" title="Cart">
+                        <i data-lucide="shopping-cart"></i>
+                        <span id="cart-count"
+                            class="absolute -top-2 -right-2 bg-purple-accent text-white text-[10px] rounded-full h-4 w-4 flex items-center justify-center hidden">0</span>
+                    </button>
+                    
+                    <button id="notification-button" class="relative hover:text-purple-accent transition duration-300" title="Notifications">
+                        <i data-lucide="bell"></i>
+                        <span id="notification-count"
+                            class="absolute -top-2 -right-2 bg-red-600 text-white text-[10px] rounded-full h-4 w-4 flex items-center justify-center hidden">0</span>
+                    </button>
+                    <button id="mobile-menu-button" class="md:hidden"><i data-lucide="menu"></i></button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 bg-black-true">
+            <button id="mobile-chat-link" class="block py-2 hover:text-purple-accent text-left w-full">Chat</button>
+            <a href="#" class="block py-2 hover:text-purple-accent">Home</a>
+            <a href="#shop-section" class="block py-2 hover:text-purple-accent">Shop</a>
+            <button id="mobile-profile-link"
+                class="block py-2 hover:text-purple-accent text-left w-full">Profile</button>
+                        <button id="mobile-sell-link" class="block py-2 hover:text-purple-accent text-left w-full">Sell</button>
+            <button id="mobile-ad-link" class="block py-2 hover:text-purple-accent text-left w-full">Ad Scheduler</button>
+            <button id="mobile-recommended-link" class="block py-2 hover:text-purple-accent text-left w-full">Recommended</button>
+            <button id="mobile-about-link" class="block py-2 hover:text-purple-accent text-left w-full">About</button>
+        </div>
+    </header>
+
+    <div id="main-content">
+        <main>
+            <!-- Hero -->
+            <section class="hero-bg text-white">
+                <div class="bg-black bg-opacity-60">
+                    <div class="container mx-auto px-6 py-32 text-center">
+                        <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-4">Define Your Apperture</h1>
+                        <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto">Exclusive collections that frame your
+                            unique perspective.</p>
+                        <a href="#shop-section"
+                            class="bg-purple-accent text-white font-bold py-3 px-8 rounded-lg hover:bg-purple-accent-dark transition duration-300 inline-block">Explore
+                            Collections</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Supreme Ads -->
+            <section class="py-16 bg-gray-900 border-t border-b border-gray-800">
+                <div class="container mx-auto px-6">
+                    <h2 class="text-3xl font-bold text-center mb-12 text-purple-accent">Supreme Advertisements</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <!-- Slot 1 -->
+                        <div class="text-center" id="supreme-slot-1-container">
+                            <h3 class="text-xl font-semibold mb-4 text-white" id="supreme-title-slot1">Ad Slot 1</h3>
+                            <div id="supreme-content-slot1"
+                                class="aspect-square w-full relative rounded-lg overflow-hidden border border-gray-700">
+                            </div>
+                            <div id="timer-slot1" class="text-xs text-gray-500 mt-2">Checking schedule...</div>
+                        </div>
+                        <!-- Slot 2 -->
+                        <div class="text-center" id="supreme-slot-2-container">
+                            <h3 class="text-xl font-semibold mb-4 text-white" id="supreme-title-slot2">Ad Slot 2</h3>
+                            <div id="supreme-content-slot2"
+                                class="aspect-square w-full relative rounded-lg overflow-hidden border border-gray-700">
+                            </div>
+                            <div id="timer-slot2" class="text-xs text-gray-500 mt-2">Checking schedule...</div>
+                        </div>
+                        <!-- Slot 3 -->
+                        <div class="text-center" id="supreme-slot-3-container">
+                            <h3 class="text-xl font-semibold mb-4 text-white" id="supreme-title-slot3">Ad Slot 3</h3>
+                            <div id="supreme-content-slot3"
+                                class="aspect-square w-full relative rounded-lg overflow-hidden border border-gray-700">
+                            </div>
+                            <div id="timer-slot3" class="text-xs text-gray-500 mt-2">Checking schedule...</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Shop -->
+            <section id="shop-section" class="py-16">
+                <div class="container mx-auto px-6">
+                    <div class="mb-12">
+                        <h2 class="text-3xl font-bold text-center mb-4">Our Collection</h2>
+                        <div class="max-w-xl mx-auto">
+                            <div class="flex flex-col md:flex-row gap-4">
+                                <div class="relative flex-grow">
+                                    <div class="relative w-full">
+                                    <input type="text" id="search-bar" placeholder="Search for items..."
+                                        class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 pl-10 pr-20 text-white focus:outline-none focus:ring-2 focus:ring-purple-accent">
+                                    <div class="absolute inset-y-0 right-0 pr-3 flex items-center space-x-2">
+                                        <button id="near-me-btn" title="Near Me" class="text-gray-400 hover:text-purple-accent transition-colors"><i data-lucide="map-pin"></i></button>
+                                        <button id="voice-search-btn" title="Voice Search" class="text-gray-400 hover:text-white transition-colors"><i data-lucide="mic"></i></button>
+                                        <button id="image-search-btn" title="Image Search" class="text-gray-400 hover:text-white transition-colors"><i data-lucide="image"></i></button>
+                                    </div>
+                                </div>
+                                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"><i
+                                            data-lucide="search" class="text-gray-400"></i></div>
+                                </div>
+                                <select id="category-filter"
+                                    class="w-full md:w-48 bg-gray-800 border border-gray-700 rounded-lg px-3 py-3 text-white focus:outline-none focus:ring-2 focus:ring-purple-accent">
+                                    <option value="All">All Categories</option>
+                                    <option>Accessories</option>
+                                    <option>Iron TMT Bars</option>
+                                    <option>Iron Antiques or Accessories</option>
+                                    <option>Special Products</option>
+                                    <option>Apparel / Clothes</option>
+                                    <option>Bags</option>
+                                    <option>Electronics</option>
+                                    <option>Hats</option>
+                                    <option>Hobby & Crafts</option>
+                                    <option>Hobby Electronics</option>
+                                    <option>Hoodies</option>
+                                    <option>Jackets</option>
+                                    <option>Jewelry</option>
+                                    <option>Pants</option>
+                                    <option>Sneakers</option>
+                                    <option>T-Shirts</option>
+                                    <option>Toys</option>
+                                    <option>Other</option>
+                                    <option id="special-cat-option" class="hidden">Special Products</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                        <div class="col-span-full text-center text-gray-400 py-10">Loading exclusive collection...</div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="bg-black-true border-t border-gray-800">
+            <div class="container mx-auto px-6 py-10">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                    <div class="md:col-span-2">
+                        <h3 class="text-xl font-bold mb-4">Apperture</h3>
+                        <p class="text-gray-400 mb-6">Framing your unique perspective.</p>
+                        <div class="flex items-center space-x-6 p-4 bg-gray-800/50 rounded-2xl border border-gray-700 w-fit">
+                            <button id="footer-cart-btn"
+                                class="text-gray-400 hover:text-purple-400 transition duration-300 transform hover:scale-110" title="Shopping Cart"><i
+                                    data-lucide="shopping-cart"></i></button>
+                            <button id="footer-notif-btn"
+                                class="text-gray-400 hover:text-red-400 transition duration-300 transform hover:scale-110" title="Notifications"><i
+                                    data-lucide="bell"></i></button>
+                            <button id="language-btn"
+                                class="text-gray-400 hover:text-green-400 transition duration-300 transform hover:scale-110" title="Switch Language"><i
+                                    data-lucide="languages"></i></button>
+                            <button id="wheel-btn"
+                                class="text-gray-400 hover:text-purple-500 transition duration-300 transform hover:scale-110" title="Lucky Spin Wheel"><i
+                                    data-lucide="refresh-cw"></i></button>
+                            <button id="rewards-btn"
+                                class="text-gray-400 hover:text-yellow-400 transition duration-300 transform hover:scale-110" title="Daily Rewards"><i
+                                    data-lucide="gift"></i></button>
+                            <button id="guide-btn"
+                                class="text-gray-400 hover:text-blue-400 transition duration-300 transform hover:scale-110" title="Apperture Guide Book"><i
+                                    data-lucide="book-open"></i></button>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold mb-4">Navigate</h4>
+                        <ul>
+                            <li class="mb-2"><a href="#" class="text-gray-400 hover:text-white">Home</a></li>
+                            <li class="mb-2"><a href="#shop-section" class="text-gray-400 hover:text-white">Shop</a>
+                            </li>
+                            <li class="mb-2"><button id="footer-sell-link"
+                                    class="cursor-pointer text-gray-400 hover:text-white">Sell</button></li>
+                            <li class="mb-2"><button id="footer-profile-link"
+                                    class="cursor-pointer text-gray-400 hover:text-white">Profile</button></li>
+                            <li class="mb-2"><button id="footer-about-link"
+                                    class="cursor-pointer text-gray-400 hover:text-white">About</button></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold mb-4">Advertisement</h4>
+                        <ul>
+                            <li class="mb-2"><button id="footer-ad-link"
+                                    class="text-gray-400 hover:text-white transition duration-300">Apperture Ad
+                                    Scheduler Campaign</button></li>
+                            <li class="mb-2"><button id="recommended-link"
+                                    class="text-gray-400 hover:text-white transition duration-300">Recommended Products</button></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-500">
+                    <p>&copy; 2025-2026 Apperture. All Rights Reserved.</p>
+                </div>
+            </div>
+        
+</footer>
+    </div>
+
+    <!-- Ad Scheduler -->
+    <div id="ad-scheduler-view" style="z-index: 1000;"
+        class="hidden fixed inset-0 z-[60] bg-gray-950 overflow-y-auto w-full h-full flex flex-col items-center p-4">
+        <main
+            class="bg-gray-900 w-full max-w-7xl rounded-xl shadow-2xl p-6 sm:p-10 space-y-8 border border-purple-900/50 text-center my-8">
+            <button onclick="closeAdScheduler()" class="absolute top-6 right-6 text-gray-400 hover:text-white z-50"><i data-lucide="x" class="w-6 h-6"></i></button>
+            <div class="relative flex flex-col items-center justify-center mb-4 pb-4 border-b border-gray-700">
+                <button id="exit-ads-btn"
+                    class="absolute left-0 p-2 rounded-full text-gray-400 hover:bg-gray-800 hover:text-white transition-colors"><svg
+                        xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+                    </svg></button>
+                <h1 class="text-3xl font-extrabold text-purple-400 tracking-wider">Apperture Ads Hub</h1>
+                <div id="ad-view-error" class="hidden mt-4 w-full bg-red-900/50 border border-red-500 text-red-200 p-3 rounded-lg text-sm font-bold animate-pulse"></div>
+            </div>
+
+            <div class="bg-gray-800/50 p-4 rounded-lg border border-purple-500/30 mb-6 text-left">
+                <h3 class="text-xl font-bold text-purple-300 mb-2">My Scheduled Campaigns Status</h3>
+                <div id="my-scheduled-ads-list" class="text-gray-300 text-sm space-y-2">
+                    <p>Loading your ad status...</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Notifications -->
+                <div
+                    class="bg-gray-800 p-6 rounded-xl text-left border border-purple-800 shadow-xl transition hover:border-purple-600 space-y-4 h-full flex flex-col">
+                    <div class="flex items-center space-x-4">
+                        <div
+                            class="flex-shrink-0 w-10 h-10 flex items-center justify-center text-xl font-bold bg-purple-600 text-white rounded-full">
+                            1</div>
+                        <h2 class="text-2xl font-semibold text-purple-400">Notifications</h2>
+                    </div>
+                    <p class="text-gray-300 italic mt-2">Broadcast text message to all users. (Admin Only/Limited)</p>
+                    <form id="schedule-form-notifications" class="space-y-4 flex-grow flex flex-col justify-between">
+                        <div><label class="block text-sm font-medium text-gray-300 mb-2">Message</label><textarea
+                                id="notif-copy-input" rows="7" required maxlength="500"
+                                class="w-full p-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-500 focus:ring-purple-500 transition resize-none"
+                                placeholder="Enter your notification text here."></textarea></div>
+                        <button type="submit"
+                            class="mt-3 w-full px-4 py-3 bg-green-600 text-white font-bold rounded-lg shadow-lg hover:bg-green-700 transition">Broadcast
+                            (248 ₹)</button>
+                    </form>
+                </div>
+                <!-- Magnetic -->
+                <div
+                    class="bg-gray-800 p-6 rounded-xl text-left border border-blue-800 shadow-xl transition hover:border-blue-600 space-y-4 h-full flex flex-col">
+                    <div class="flex items-center space-x-4">
+                        <div
+                            class="flex-shrink-0 w-10 h-10 flex items-center justify-center text-xl font-bold bg-blue-600 text-white rounded-full">
+                            2</div>
+                        <h2 class="text-2xl font-semibold text-blue-400">Magnetic Listing</h2>
+                    </div>
+                    <p class="text-gray-300 italic mt-2">Boost your item (1 magnetic for every 3 items in category).</p>
+                    <form id="schedule-form-magnetic" class="space-y-4 flex-grow flex flex-col justify-between">
+                        <div class="space-y-3">
+                            <div><label
+                                    class="block text-sm font-medium text-gray-300 mb-1">Description</label><textarea
+                                    id="magnetic-desc" rows="2" required maxlength="500"
+                                    class="w-full p-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:ring-blue-500 transition resize-none"></textarea>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-300 mb-1">Select Category</label>
+                                <select id="magnetic-category" required
+                                    class="w-full p-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:ring-blue-500 transition">
+                                    <option value="" disabled selected>Category</option>
+                                    <option>Accessories</option>
+                                    <option>Iron TMT Bars</option>
+                                    <option>Iron Antiques or Accessories</option>
+                                    <option>Special Products</option>
+                                    <option>Apparel / Clothes</option>
+                                    <option>Bags</option>
+                                    <option>Electronics</option>
+                                    <option>Hats</option>
+                                    <option>Hobby & Crafts</option>
+                                    <option>Hoodies</option>
+                                    <option>Jackets</option>
+                                    <option>Jewelry</option>
+                                    <option>Pants</option>
+                                    <option>Sneakers</option>
+                                    <option>T-Shirts</option>
+                                    <option>Toys</option>
+                                    <option>Other</option>
+                                    <option id="mag-special-cat" class="hidden">Special Products</option>
+                                </select>
+                            </div>
+                            <div><label class="block text-sm font-medium text-gray-300 mb-1">Image</label><input
+                                    type="file" id="magnetic-image" accept="image/*" required
+                                    class="w-full text-sm text-gray-400 file:bg-blue-600 file:text-white file:rounded file:px-2 file:py-1"><img
+                                    id="magnetic-preview"
+                                    class="hidden mt-2 w-full h-20 object-cover rounded border border-gray-600"></div>
+                            <div><label class="block text-sm font-medium text-gray-300 mb-1">Link</label><input
+                                    type="url" id="magnetic-link" required
+                                    class="w-full p-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:ring-blue-500 transition"
+                                    placeholder="https://"></div>
+                        </div>
+                        <button type="submit"
+                            class="mt-3 w-full px-4 py-3 bg-yellow-500 text-black font-bold rounded-lg hover:bg-yellow-600 transition">Purchase
+                            (499 ₹)</button>
+                    </form>
+                </div>
+                <!-- Supreme -->
+                <div
+                    class="bg-gray-800 p-6 rounded-xl text-left border border-red-800 shadow-xl transition hover:border-red-600 space-y-4 h-full flex flex-col">
+                    <div class="flex items-center space-x-4">
+                        <div
+                            class="flex-shrink-0 w-10 h-10 flex items-center justify-center text-xl font-bold bg-red-600 text-white rounded-full">
+                            3</div>
+                        <h2 class="text-2xl font-semibold text-red-400">Supreme Booking</h2>
+                    </div>
+                    <p class="text-gray-300 italic mt-2">Book a Homepage Slot for 24 hours.</p>
+                    <form id="schedule-form-supreme" class="space-y-3 flex-grow flex flex-col justify-between">
+                        <div class="space-y-3">
+                            <input type="hidden" id="supreme-slot-target" value="">
+                            
+
+                            <div><label class="block text-sm font-medium text-gray-300 mb-1">Title</label><input
+                                    type="text" id="supreme-title" required maxlength="30"
+                                    class="w-full p-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:ring-red-500 transition">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-300 mb-1">Category</label>
+                                <select id="supreme-category" required
+                                    class="w-full p-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:ring-red-500 transition">
+                                    <option value="All">All (Homepage)</option>
+                                    <option>Accessories</option>
+                                    <option>Iron TMT Bars</option>
+                                    <option>Iron Antiques or Accessories</option>
+                                    <option>Special Products</option>
+                                    <option>Apparel / Clothes</option>
+                                    <option>Bags</option>
+                                    <option>Electronics</option>
+                                    <option>Hats</option>
+                                    <option>Hobby & Crafts</option>
+                                    <option>Hoodies</option>
+                                    <option>Jackets</option>
+                                    <option>Jewelry</option>
+                                    <option>Pants</option>
+                                    <option>Sneakers</option>
+                                    <option>T-Shirts</option>
+                                    <option>Toys</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+                            <div><label class="block text-sm font-medium text-gray-300 mb-1">Image</label><input
+                                    type="file" id="supreme-image" accept="image/*" required
+                                    class="w-full text-sm text-gray-400 file:bg-red-600 file:text-white file:rounded file:px-2 file:py-1"><img
+                                    id="supreme-preview"
+                                    class="hidden mt-2 w-full h-20 object-cover rounded border border-gray-600"></div>
+                            <div><label class="block text-sm font-medium text-gray-300 mb-1">Tagline</label><input
+                                    type="text" id="supreme-ad-copy" required maxlength="50"
+                                    class="w-full p-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:ring-red-500 transition">
+                            </div>
+                        </div>
+                        <button type="submit"
+                            class="mt-3 w-full px-4 py-3 bg-red-600 text-white font-bold rounded-lg hover:bg-red-700 transition">Book
+                            Slot (1500 ₹)</button>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modals -->
+    
+                <div id="go-to-bottom" class="fixed bottom-24 left-1/2 -translate-x-1/2 z-40 hidden w-full max-w-xs px-4">
+                    <button onclick="window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'})" class="w-full bg-purple-600/90 backdrop-blur text-white px-6 py-3 rounded-xl shadow-[0_0_25px_rgba(138,43,226,0.6)] flex items-center justify-between animate-bounce border border-purple-400/50 hover:bg-purple-500 transition-all duration-300 group">
+                        <span class="font-bold text-sm uppercase tracking-wider">Go to bottom of website</span>
+                        <i data-lucide="arrow-down" class="w-5 h-5 group-hover:translate-y-1 transition-transform"></i>
+                    </button>
+                </div>
+
+    <!-- Rewards & Games -->
+    <div id="rewards-modal" class="hidden fixed inset-0 bg-black bg-opacity-70 z-[70] flex items-center justify-center modal p-4">
+        <div class=" relative bg-gray-900 border border-yellow-500 rounded-lg shadow-xl p-8 w-full max-w-lg text-center">
+            <button class="close-modal-btn absolute top-4 right-4 text-gray-400 hover:text-white z-50" data-modal-id="rewards-modal"><i data-lucide="x"></i></button>
+            <h2 class="text-3xl font-bold text-yellow-400 mb-2">Daily Rewards</h2>
+            <p class="text-xs text-gray-400 mb-6 italic">Collect every day to maintain your streak!</p>
+            <div id="rewards-grid" class="grid grid-cols-4 sm:grid-cols-7 gap-3 mb-8">
+                <!-- Days M-S will be filled by JS -->
+            </div>
+            <button id="claim-reward-btn" class="w-full bg-yellow-500 text-black font-bold py-4 rounded-lg hover:bg-yellow-600 transition shadow-[0_0_15px_rgba(234,179,8,0.4)] disabled:opacity-50 disabled:grayscale">Claim Today's Reward</button>
+            <button class="close-modal-btn mt-4 text-gray-400 hover:text-white text-sm" data-modal-id="rewards-modal">Close</button>
+        </div>
+    </div>
+
+    <div id="wheel-modal" class="hidden fixed inset-0 bg-black bg-opacity-95 z-[70] flex items-center justify-center modal p-4">
+        <div class="relative w-full max-w-sm bg-gray-950 border-2 border-purple-500/40 rounded-[3rem] p-8 flex flex-col items-center space-y-8 shadow-[0_0_100px_rgba(168,85,247,0.25)] overflow-hidden">
+            <!-- Dynamic Background Glow -->
+            <div class="absolute top-0 left-0 w-full h-full opacity-30 pointer-events-none">
+                <div class="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-purple-600 blur-[80px] rounded-full animate-pulse"></div>
+                <div class="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-blue-600 blur-[80px] rounded-full animate-pulse" style="animation-delay: 1s;"></div>
+            </div>
+
+            <div class="text-center z-10">
+                <h2 class="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-b from-white to-purple-400 italic tracking-tighter uppercase leading-none">Lucky Spin</h2>
+                <p class="text-[9px] text-purple-400 font-bold tracking-[0.4em] mt-3 uppercase opacity-80">Fortune favors the bold</p>
+            </div>
+            
+            <div class="relative w-72 h-72 z-10 perspective-1000">
+                <!-- Pointer Container (for mechanical click) -->
+                <div id="wheel-pointer-container" class="absolute -top-3 left-1/2 -translate-x-1/2 z-40 origin-bottom transition-transform duration-75">
+                    <svg width="34" height="44" viewBox="0 0 34 44" fill="none" xmlns="http://www.w3.org/2000/svg" class="filter drop-shadow-[0_4px_10px_rgba(0,0,0,0.5)]">
+                        <path d="M17 44L2 4C2 4 17 0 17 0C17 0 32 4 32 4L17 44Z" fill="url(#pointer_grad)"/>
+                        <path d="M17 44L5 6C5 6 17 3 17 3C17 3 29 6 29 6L17 44Z" fill="white" fill-opacity="0.2"/>
+                        <defs>
+                            <linearGradient id="pointer_grad" x1="17" y1="0" x2="17" y2="44" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#FCD34D"/>
+                                <stop offset="1" stop-color="#D97706"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+                
+                <!-- The Wheel SVG -->
+                <div id="wheel-outer" class="w-full h-full rounded-full border-[8px] border-gray-900 shadow-[0_0_60px_rgba(0,0,0,0.8),inset_0_0_30px_rgba(0,0,0,0.5)] bg-gray-900 relative overflow-visible">
+                    <svg id="wheel-svg" viewBox="0 0 100 100" class="w-full h-full transition-transform duration-[5000ms] cubic-bezier(0.15, 0, 0.15, 1) transform-gpu">
+                        <!-- Segments dynamically injected via JS -->
+                    </svg>
+                    
+                    <!-- Center Hub -->
+                    <div class="absolute inset-0 flex items-center justify-center z-30 pointer-events-none">
+                        <div class="w-16 h-16 bg-gray-950 rounded-full border-4 border-gray-800 shadow-2xl flex items-center justify-center group">
+                             <div class="absolute inset-1 rounded-full bg-gradient-to-br from-purple-500 to-blue-600 opacity-20 group-hover:opacity-40 transition"></div>
+                             <div class="relative text-white font-black text-xl italic tracking-tighter select-none">A</div>
+                        </div>
+                    </div>
+
+                    <!-- Decorative outer ring dots -->
+                    <div class="absolute inset-[-12px] pointer-events-none">
+                         <div class="w-full h-full relative animate-spin-slow">
+                              <div class="absolute top-0 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-purple-500 rounded-full shadow-[0_0_10px_#A855F7]"></div>
+                              <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-blue-500 rounded-full shadow-[0_0_10px_#3B82F6]"></div>
+                              <div class="absolute left-0 top-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-purple-500 rounded-full shadow-[0_0_10px_#A855F7]"></div>
+                              <div class="absolute right-0 top-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-blue-500 rounded-full shadow-[0_0_10px_#3B82F6]"></div>
+                         </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-full space-y-5 z-10">
+                <button id="spin-btn" class="w-full group relative bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-500 hover:to-blue-500 text-white font-black py-5 rounded-[1.5rem] shadow-[0_15px_35px_rgba(138,43,226,0.4)] transition-all duration-300 active:scale-95 uppercase tracking-[0.2em] overflow-hidden border-t border-white/20">
+                    <span class="relative z-10">Spin (1 Ticket)</span>
+                    <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-shine"></div>
+                </button>
+                
+                <div class="flex items-center justify-between px-3">
+                    <div class="flex flex-col">
+                        <span class="text-[9px] text-gray-500 uppercase tracking-widest font-bold">Your Balance</span>
+                        <span class="text-sm text-white font-black tabular-nums"><span id="wheel-ticket-count" class="text-purple-400">0</span> Tickets</span>
+                    </div>
+                    <button class="close-modal-btn text-gray-400 hover:text-white text-[10px] font-black uppercase tracking-widest py-2.5 px-5 border border-gray-800 rounded-xl transition-all hover:bg-gray-800" data-modal-id="wheel-modal">Exit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="guide-modal" class="hidden fixed inset-0 bg-black bg-opacity-70 z-[80] flex items-center justify-center modal p-4">
+        <div class="bg-gray-900 border border-blue-500 rounded-lg shadow-xl p-8 w-full max-w-2xl max-h-[80vh] overflow-y-auto">
+            <h2 class="text-3xl font-bold text-blue-400 mb-6">Apperture Guide</h2>
+            <div class="space-y-4 text-gray-300">
+                <section>
+                    <h3 class="text-xl font-bold text-white flex items-center"><i data-lucide="shopping-bag" class="w-5 h-5 mr-2 text-blue-400"></i> 1. Shopping & Starring</h3>
+                    <p>Browse unique fashion items. You can 'Star' any listing up to 20 times. Highly starred items appear in the 'Recommended' section.</p>
+                </section>
+                <section>
+                    <h3 class="text-xl font-bold text-white flex items-center"><i data-lucide="zap" class="w-5 h-5 mr-2 text-purple-400"></i> 2. Magnetic & Gem Boosting</h3>
+                    <p>Standard listings are free. Use 15 Gems to instantly boost your listing to 'Magnetic' status (Green Glow) to stand out from the crowd.</p>
+                </section>
+                <section>
+                    <h3 class="text-xl font-bold text-white flex items-center"><i data-lucide="calendar" class="w-5 h-5 mr-2 text-yellow-400"></i> 3. Daily Rewards & Lucky Spin</h3>
+                    <p>Login daily to claim Stars, Gems, and Tickets. Use Aperture Tickets to play the Lucky Spin for a chance to win the Legendary Jackpot!</p>
+                </section>
+                <section>
+                    <h3 class="text-xl font-bold text-white flex items-center"><i data-lucide="languages" class="w-5 h-5 mr-2 text-green-400"></i> 4. Global Community</h3>
+                    <p>Apperture supports 8 languages and features a 'Near Me' search to connect you with local sellers in your area.</p>
+                </section>
+                <section>
+                    <h3 class="text-xl font-bold text-white flex items-center"><i data-lucide="shield-check" class="w-5 h-5 mr-2 text-red-400"></i> 5. AI Security</h3>
+                    <p>Our AI monitors all text and images to ensure a safe, professional, and respectful environment for all fashion enthusiasts.</p>
+                </section>
+                <section>
+                    <h3 class="text-xl font-bold text-white">3. Rewards & Tickets</h3>
+                    <p>Claim daily rewards for stars, gems, and tickets. Use tickets to Spin the Wheel for massive jackpots.</p>
+                </section>
+                <section>
+                    <h3 class="text-xl font-bold text-white">4. Supreme Ads</h3>
+                    <p>Book a homepage slot for 24 hours. The system automatically handles timing and notifications.</p>
+                </section>
+            </div>
+            <button class="close-modal-btn mt-8 w-full bg-blue-600 text-white py-2 rounded-lg" data-modal-id="guide-modal">Got it!</button>
+        </div>
+    </div>
+
+    <div id="recommended-modal" class="hidden fixed inset-0 bg-black bg-opacity-80 z-[90] flex items-center justify-center modal p-4 backdrop-blur-md">
+        <div class="bg-gray-950 border-2 border-green-500 rounded-2xl shadow-[0_0_50px_rgba(34,197,94,0.2)] p-8 w-full max-w-4xl max-h-[90vh] flex flex-col overflow-hidden">
+            <h2 class="text-4xl font-black text-green-400 mb-6 tracking-tighter uppercase italic">Recommended Products</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8 bg-gray-900/50 p-4 rounded-xl border border-gray-800">
+                <input type="text" id="rec-name" placeholder="Product Name..." class="bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-green-500 outline-none">
+                <select id="rec-category" class="bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-green-500 outline-none">
+                    <option value="All">All Categories</option>
+                    <option>Accessories</option>
+                    <option>Iron TMT Bars</option>
+                    <option>Iron Antiques or Accessories</option>
+                    <option>Special Products</option>
+                    <option>Apparel / Clothes</option><option>Bags</option><option>Electronics</option><option>Hats</option><option>Hobby & Crafts</option><option>Hobby Electronics</option><option>Hoodies</option><option>Jackets</option><option>Jewelry</option><option>Pants</option><option>Sneakers</option><option>T-Shirts</option><option>Toys</option><option>Other</option>
+                </select>
+                <button id="rec-search-btn" class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-black uppercase tracking-widest transition shadow-lg active:scale-95">Search AI</button>
+            </div>
+            <div id="rec-results" class="grid grid-cols-1 md:grid-cols-2 gap-4 overflow-y-auto">
+                <p class="text-gray-400 text-center col-span-full">Enter criteria to start AI search...</p>
+            </div>
+            <button class="close-modal-btn mt-6 text-gray-400 hover:text-white" data-modal-id="recommended-modal">Close</button>
+        </div>
+    </div>
+
+    <div id="language-modal" class="hidden fixed inset-0 bg-black bg-opacity-70 z-[100] flex items-center justify-center modal p-4">
+        <div class=" relative bg-gray-900 border border-green-500 rounded-lg shadow-xl p-8 w-full max-w-sm text-center">
+            <h2 class="text-3xl font-bold text-green-400 mb-6">Select Language</h2>
+            <div id="language-options" class="grid grid-cols-2 gap-4">
+                <button class="lang-opt-btn bg-gray-800 hover:bg-purple-600 p-3 rounded font-bold transition-colors" data-lang="en">English</button>
+                <button class="lang-opt-btn bg-gray-800 hover:bg-purple-600 p-3 rounded font-bold transition-colors" data-lang="hi">Hindi</button>
+                <button class="lang-opt-btn bg-gray-800 hover:bg-purple-600 p-3 rounded font-bold transition-colors" data-lang="ta">Tamil</button>
+                <button class="lang-opt-btn bg-gray-800 hover:bg-purple-600 p-3 rounded font-bold transition-colors" data-lang="mr">Marathi</button>
+                <button class="lang-opt-btn bg-gray-800 hover:bg-purple-600 p-3 rounded font-bold transition-colors" data-lang="es">Spanish</button>
+                <button class="lang-opt-btn bg-gray-800 hover:bg-purple-600 p-3 rounded font-bold transition-colors" data-lang="ru">Russian</button>
+                <button class="lang-opt-btn bg-gray-800 hover:bg-purple-600 p-3 rounded font-bold transition-colors" data-lang="ca">Canadian</button>
+                <button class="lang-opt-btn bg-gray-800 hover:bg-purple-600 p-3 rounded font-bold transition-colors" data-lang="zh">Chinese</button>
+            </div>
+            <button class="close-modal-btn mt-8 text-gray-400 hover:text-white text-sm" data-modal-id="language-modal">Cancel</button>
+        </div>
+    </div>
+
+<div id="cart-modal"
+        class="hidden fixed inset-0 bg-black bg-opacity-70 z-50 flex items-center justify-center modal p-4">
+        <div
+            class=" relative bg-gray-900 border border-purple-accent rounded-lg shadow-xl p-6 w-full max-w-sm max-h-[90vh] flex flex-col">
+            <div class="flex justify-between items-center mb-4 flex-shrink-0">
+                <h2 class="text-2xl font-bold">Shopping Cart</h2><button class="close-modal-btn"
+                    data-modal-id="cart-modal"><i data-lucide="x"></i></button>
+            </div>
+            <div id="cart-items" class="space-y-4 flex-grow overflow-y-auto p-1 min-h-[100px]">
+                <p class="text-gray-400 text-center py-4">Your cart is empty.</p>
+            </div>
+            <div class="border-t border-gray-700 pt-4 mt-4 flex-shrink-0">
+                <div class="flex justify-between items-center mb-4"><span
+                        class="text-lg font-semibold">Total:</span><span id="cart-total"
+                        class="text-lg font-bold text-purple-accent">0.00</span></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="chat-modal"
+        class="hidden fixed inset-0 bg-black bg-opacity-70 z-50 flex items-center justify-center modal p-4">
+        <div
+            class=" relative bg-gray-900 border border-purple-accent rounded-lg shadow-xl w-full max-w-4xl h-[90vh] flex overflow-hidden">
+            <div id="chat-contact-list-container"
+                class="w-full md:w-1/3 border-r border-gray-700 flex flex-col overflow-hidden bg-gray-800">
+                <div class="p-4 border-b border-gray-700 flex-shrink-0 flex justify-between items-center">
+                    <h2 class="text-xl font-bold">Chats</h2><button class="close-modal-btn"
+                        data-modal-id="chat-modal"><i data-lucide="x"></i></button>
+                </div>
+                <div id="chat-contact-list" class="flex-grow overflow-y-auto">
+                    <div class="p-4 text-gray-400 text-center">Loading chats...</div>
+                </div>
+            </div>
+            <div id="chat-conversation-view"
+                class="hidden md:flex flex-col w-full md:w-2/3 h-full bg-gray-900 relative">
+                <div id="chat-header"
+                    class="hidden p-4 border-b border-gray-700 flex justify-between items-center bg-gray-800 z-10">
+                    <div class="flex flex-col">
+                        <div class="font-bold text-lg" id="chat-header-name">Select a chat</div>
+                        <div class="flex items-center text-[10px] text-blue-400 font-bold uppercase tracking-widest">
+                            <i data-lucide="shield-check" class="w-3 h-3 mr-1"></i>
+                            Super Nexus Encryption Active
+                        </div>
+                    </div><button class="close-modal-btn text-gray-400 hover:text-white" data-modal-id="chat-modal"><i
+                            data-lucide="x"></i></button>
+                </div>
+                <div id="chat-messages" class="flex-grow overflow-y-auto p-4 space-y-3 flex flex-col">
+                    <div class="h-full flex flex-col items-center justify-center text-center p-4 text-gray-500"><i
+                            data-lucide="message-circle" class="w-16 h-16 mb-4 opacity-50"></i>
+                        <p>Select a chat to start messaging</p>
+                    </div>
+                </div>
+                <div id="chat-input-area" class="hidden p-4 border-t border-gray-700 bg-gray-800">
+                    <form id="chat-form" class="flex space-x-2 w-full">
+                        <div class="flex-grow">
+                            <!-- Admin Input -->
+                            <input type="text" id="admin-message-input"
+                                class="hidden w-full bg-gray-700 border border-gray-600 rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-accent text-white"
+                                placeholder="Type a message (Admin)..." autocomplete="off">
+                            <!-- User Select -->
+                            <select id="user-message-select"
+                                class="hidden w-full bg-gray-700 border border-gray-600 rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-accent text-white appearance-none cursor-pointer">
+                                <option value="" disabled selected>Select a message...</option>
+                                <option>Is the price negotiable?</option>
+                                <option>I can offer ₹... for this.</option>
+                                <option>What is your best price?</option>
+                                <option>I accept your offer.</option>
+                                <option>Sorry, that price is too low.</option>
+                                <option>Would you consider ₹...?</option>
+                                <option>Let's meet in the middle at ₹...</option>
+                                <option>Is this still available?</option>
+                                <option>Yes, I'll take it.</option>
+                                <option>No, thanks.</option>
+                            </select>
+                        </div>
+                        <button type="submit"
+                            class="bg-purple-accent text-white p-2 rounded-full hover:bg-purple-700 transition"><i
+                                data-lucide="send" class="w-5 h-5"></i></button>
+                    </form>
+                </div>
+                <button id="chat-back-btn-mobile"
+                    class="absolute top-4 left-4 md:hidden text-gray-400 hover:text-white p-2 bg-gray-800 rounded-full z-20 hidden"><i
+                        data-lucide="arrow-left" class="w-5 h-5"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <div id="notification-modal"
+        class="hidden fixed inset-0 bg-black bg-opacity-70 z-50 flex items-center justify-center modal p-4">
+        <div
+            class=" relative bg-gray-900 border border-purple-accent rounded-lg shadow-xl p-6 w-full max-w-md max-h-[90vh] flex flex-col">
+            <div class="flex justify-between items-center mb-4 flex-shrink-0">
+                <h2 class="text-2xl font-bold">Notifications</h2><button class="close-modal-btn"
+                    data-modal-id="notification-modal"><i data-lucide="x"></i></button>
+            </div>
+            <div id="admin-notification-panel" class="hidden border-b border-gray-700 pb-4 mb-4"><textarea
+                    id="admin-notif-text"
+                    class="w-full bg-gray-800 text-white p-3 rounded-lg border border-gray-700 focus:border-purple-500 focus:outline-none"
+                    rows="3" placeholder="Post official system announcement..."></textarea><button id="admin-notif-send"
+                    class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mt-2 w-full transition">Post
+                    Alert (Admin)</button></div>
+            <div id="notification-list" class="flex-grow overflow-y-auto space-y-4">
+                <p class="text-gray-400 text-center py-4">No new announcements or messages.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="about-modal" class="hidden fixed inset-0 bg-black bg-opacity-80 z-[100] flex items-center justify-center p-4">
+        <div
+            class="relative bg-gray-900 border border-purple-accent rounded-lg shadow-xl p-8 w-full max-w-2xl max-h-[85vh] overflow-y-auto">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-3xl font-bold">About Apperture</h2><button class="close-modal-btn"
+                    data-modal-id="about-modal" class="absolute top-4 right-4 text-gray-400 hover:text-white z-50"><i data-lucide="x"></i></button>
+            </div>
+            <div class="text-center"><svg class="h-32 w-32 text-white mx-auto mb-4" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2 L20 6 V18 L12 22 L4 18 V6 L12 2 Z" />
+                    <path d="M12 6 L8 10 H16 L12 6 Z" />
+                    <path d="M12 10 V16" />
+                </svg>
+                <div class="max-h-[60vh] overflow-y-auto pr-4 text-left space-y-4">
+                    <h3 class="text-2xl font-semibold mb-4 text-center">Our Vision</h3>
+                    <p class="text-gray-400 max-w-xl mx-auto text-center">Apperture was imagined as a space where people
+                        could not only buy and sell clothing but also share their personal stories and styles. We
+                        believe in the power of community and individual expression through fashion.</p>
+                    <h3 class="text-2xl font-semibold mb-4 border-t border-gray-700 pt-4 text-center">The Creator</h3>
+                    <div class="text-center bg-gray-800 p-6 rounded-lg border border-gray-700">
+                        <p class="text-2xl text-purple-400 font-bold mb-2">Divyansh Gupta</p>
+                        <p class="text-gray-400 text-sm mb-4">Born: May 5, 2013</p>
+                        <div class="text-gray-300 text-sm leading-relaxed space-y-2 max-w-lg mx-auto">
+                            <p>I created this website to view how we share our unique perspective.</p>
+                            <p>What started as a simple concept of connectivity grew into a complex ecosystem built for
+                                enthusiasts who demand authenticity and style.</p>
+                            <p>We believe that fashion is not just about what you wear, but about the story you tell
+                                through the pieces you acquire and share.</p>
+                            <p>Apperture is more than just a store; it is a community-driven hub where the rarest drops
+                                find their rightful owners through secure interactions.</p>
+                            <p>Founded on the principles of trust and exclusivity, we ensure every listing is verified.
+                            </p>
+                            <p>Our goal is to revolutionize the way you perceive and trade fashion in the digital age.
+                            </p>
+                            <p class="font-bold text-purple-400 mt-4">The main thing I created this website TO DEFINE A
+                                APPERTURE</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="sell-modal"
+        class="hidden fixed inset-0 bg-black bg-opacity-70 z-50 flex items-center justify-center modal p-4">
+        <div
+            class=" relative bg-gray-900 border border-purple-accent rounded-lg shadow-xl w-full max-w-lg max-h-[90vh] flex flex-col">
+            <div class="flex justify-between items-center mb-6 p-6 pb-0 flex-shrink-0">
+                <h2 class="text-2xl font-bold">Sell Your Item</h2><button class="close-modal-btn"
+                    data-modal-id="sell-modal"><i data-lucide="x"></i></button>
+            </div>
+            <div class="overflow-y-auto p-6 pt-4">
+                <form id="sell-form" autocomplete="off" novalidate>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="mb-4"><label for="sell-title"
+                                class="block text-sm font-medium text-gray-400 mb-2">Title</label><input type="text"
+                                id="sell-title" required
+                                class="w-full bg-gray-800 border border-gray-700 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-purple-accent"
+                                autocomplete="off"></div>
+                        <div class="mb-4"><label for="sell-category"
+                                class="block text-sm font-medium text-gray-400 mb-2">Category</label><select
+                                id="sell-category" required
+                                class="w-full bg-gray-800 border border-gray-700 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-purple-accent">
+                                <option>Accessories</option>
+                                <option>Iron TMT Bars</option>
+                                <option>Iron Antiques or Accessories</option>
+                                <option>Special Products</option>
+                                <option>Apparel / Clothes</option>
+                                <option>Bags</option>
+                                <option>Electronics</option>
+                                <option>Hats</option>
+                                <option>Hobby & Crafts</option>
+                                <option>Hobby Electronics</option>
+                                <option>Hoodies</option>
+                                <option>Jackets</option>
+                                <option>Jewelry</option>
+                                <option>Pants</option>
+                                <option>Sneakers</option>
+                                <option>T-Shirts</option>
+                                <option>Toys</option>
+                                <option>Other</option>
+                                <option id="sell-special-cat" class="hidden">Special Products</option>
+                            </select></div>
+                    </div>
+                    <div class="grid grid-cols-3 gap-4 mb-4">
+                        <div class="col-span-2">
+                            <label for="sell-price" class="block text-sm font-medium text-gray-400 mb-2">Price</label>
+                            <input type="number" id="sell-price" required min="0" step="1"
+                                class="w-full bg-gray-800 border border-gray-700 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-purple-accent"
+                                autocomplete="off">
+                        </div>
+                        <div>
+                            <label for="sell-currency" class="block text-sm font-medium text-gray-400 mb-2">Currency</label>
+                            <select id="sell-currency" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-purple-accent">
+                                <option value="₹">INR (₹)</option>
+                                <option value="$">USD ($)</option>
+                                <option value="€">EUR (€)</option>
+                                <option value="£">GBP (£)</option>
+                                <option value="¥">JPY (¥)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mb-4"><label for="sell-description"
+                            class="block text-sm font-medium text-gray-400 mb-2">Description</label><textarea
+                            id="sell-description" rows="3" required
+                            class="w-full bg-gray-800 border border-gray-700 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-purple-accent"
+                            autocomplete="off"></textarea></div>
+
+                    <div class="mb-4"><label for="sell-condition"
+                            class="block text-sm font-medium text-gray-400 mb-2">Condition</label><select
+                            id="sell-condition" required
+                            class="w-full bg-gray-800 border border-gray-700 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-purple-accent">
+                            <option value="" disabled selected>Select Condition</option>
+                            <option>New</option>
+                            <option>Like New</option>
+                            <option>Used - Good</option>
+                            <option>Used - Fair</option>
+                        </select></div>
+                    <div class="mb-4"><label for="sell-address" class="block text-sm font-medium text-gray-400 mb-2">Item Location (Optional)</label><input type="text" id="sell-address" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-purple-accent" placeholder="e.g. New York, USA"></div>
+
+                    <div class="mb-4 relative group"><label for="sell-phone"
+                            class="block text-sm font-medium text-gray-400 mb-2">Mobile Number</label><input type="tel"
+                            id="sell-phone" required
+                            class="w-full bg-gray-800 border border-gray-700 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-purple-accent"
+                            placeholder="" autocomplete="off">
+                        <div class="absolute hidden group-hover:block group-focus-within:block bg-gray-800 border border-purple-accent text-gray-300 text-xs rounded-lg shadow-lg p-3 w-80 z-10"
+                            style="bottom: 100%; left: 50%; transform: translateX(-50%) translateY(-8px);">Please put
+                            your real phone number in the input box. You’re sharing it at your own risk, so make sure
+                            you’re comfortable with it. We are not responsible for any fraud or misleading issues caused
+                            by third parties or fake numbers. If you understand this, you can enter your real number
+                            normally.<div class="absolute w-2 h-2 bg-gray-800 border-r border-b border-purple-accent"
+                                style="bottom: -5px; left: 50%; transform: translateX(-50%) rotate(45deg);"></div>
+                        </div>
+                    </div>
+                    <div class="mb-6"><label for="sell-image"
+                            class="block text-sm font-medium text-gray-400 mb-2">Upload Photos (Upload 4+ for 3D View)</label>
+                        <input type="file" id="sell-image" accept="image/*" required multiple
+                            class="w-full text-sm text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-purple-accent file:text-white hover:file:bg-purple-accent-dark">
+                        <div id="image-error-msg" class="text-red-500 text-xs mt-1 hidden">Images must be under 2MB each.</div>
+                        <div id="sell-image-previews" class="flex flex-wrap gap-2 mt-4"></div>
+                        <p class="text-[10px] text-gray-500 mt-2">Tip: Upload images of all sides (front, back, sides) to enable interactive 3D spectator mode for buyers.</p>
+                    </div>
+                    <button type="submit" id="submit-sell-btn"
+                        class="w-full bg-purple-accent text-white py-3 rounded-lg hover:bg-purple-accent-dark transition duration-300">List
+                        Item</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="profile-modal"
+        class="hidden fixed inset-0 bg-black bg-opacity-70 z-50 flex items-center justify-center modal p-4">
+        <div
+            class=" relative bg-gray-900 border border-purple-accent rounded-lg shadow-xl p-8 w-full max-w-3xl max-h-[90vh] flex flex-col">
+            <div class="flex justify-between items-start mb-6 flex-shrink-0">
+                <div class="flex items-center space-x-4"><img id="profile-pic-display" src="" alt="Profile"
+                        class="w-24 h-24 rounded-full border-2 border-purple-accent object-cover">
+                    <div>
+                        <h2 id="profile-name-display" class="text-3xl font-bold">User Name</h2><button
+                            id="edit-profile-btn" class="text-sm text-purple-accent hover:underline mt-1">Edit
+                            Profile</button>
+                    </div>
+                </div><button class="close-modal-btn" data-modal-id="profile-modal"><i data-lucide="x"></i></button>
+            </div>
+            <div class="flex-grow overflow-y-auto pr-4">
+                <h3 class="text-2xl font-semibold mb-4 border-b border-gray-700 pb-2">My Listings</h3>
+                <div id="my-listings-container" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <p class="text-gray-400 col-span-full">You haven't listed any items yet.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="edit-profile-modal"
+        class="hidden fixed inset-0 bg-black bg-opacity-70 z-50 flex items-center justify-center modal p-4">
+        <div class=" relative bg-gray-900 border border-purple-accent rounded-lg shadow-xl p-8 w-full max-w-md">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold">Edit Profile</h2><button class="close-modal-btn"
+                    data-modal-id="edit-profile-modal"><i data-lucide="x"></i></button>
+            </div>
+            <form id="edit-profile-form">
+                <div class="mb-4"><label for="edit-name"
+                        class="block text-sm font-medium text-gray-400 mb-2">Name</label><input type="text" id="edit-name" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-purple-accent"></div><div class="mb-4"><label for="edit-address" class="block text-sm font-medium text-gray-400 mb-2">Address / Location</label><input type="text" id="edit-address" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-purple-accent">
+                </div>
+                <div class="mb-4"><label for="edit-password"
+                        class="block text-sm font-medium text-gray-400 mb-2">Password (Required for Verification)</label><input type="password" id="edit-password" placeholder="Set a secure password" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-purple-accent"></div>
+                <div class="mb-4"><label for="edit-profile-pic"
+                        class="block text-sm font-medium text-gray-400 mb-2">Profile Picture (Max 1MB)</label><input
+                        type="file" id="edit-profile-pic" accept="image/*"
+                        class="w-full text-sm text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-purple-accent file:text-white hover:file:bg-purple-accent-dark">
+                </div>
+                <button type="submit"
+                    class="w-full bg-purple-accent text-white py-3 rounded-lg hover:bg-purple-accent-dark transition duration-300">Save
+                    Changes</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="product-detail-modal"
+        class="hidden fixed inset-0 bg-black bg-opacity-80 z-50 flex items-center justify-center modal p-4 backdrop-blur-sm">
+        <div
+            class=" relative bg-gray-950 border border-purple-500/50 rounded-2xl shadow-2xl p-0 w-full max-w-5xl max-h-[90vh] flex flex-col md:flex-row overflow-hidden">
+            <div
+                class="md:w-3/5 flex-shrink-0 bg-black flex items-center justify-center h-[350px] md:h-auto overflow-hidden relative border-b md:border-b-0 md:border-r border-gray-800">
+                <img id="detail-image" src="" alt="Product Image" class="w-full h-full object-contain transition-transform duration-700">
+            </div>
+            <div class="md:w-2/5 flex flex-col h-full p-6 md:p-8 overflow-y-auto">
+                <div class="flex justify-between items-start mb-4">
+                    <h2 id="detail-title" class="text-3xl font-black text-white leading-none tracking-tighter uppercase">Product Title</h2>
+                    <button class="close-modal-btn text-gray-500 hover:text-white transition-colors" data-modal-id="product-detail-modal">
+                        <i data-lucide="x" class="w-6 h-6"></i>
+                    </button>
+                </div>
+                <div class="flex-shrink-0 mb-3">
+                    <p id="detail-price" class="text-2xl text-purple-accent font-bold">₹0.00</p>
+                    <div class="flex flex-wrap gap-2 mt-2">
+                        <span class="text-[10px] uppercase tracking-wider text-gray-400 bg-gray-800 border border-gray-700 px-2 py-1 rounded" id="detail-category">Category</span>
+                        <span class="text-[10px] uppercase tracking-wider text-gray-400 bg-gray-800 border border-gray-700 px-2 py-1 rounded" id="detail-condition">Condition: -</span>
+                    </div>
+                </div>
+                <div class="flex-grow mb-6">
+                    <h4 class="text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">Description</h4>
+                    <p id="detail-description" class="text-sm text-gray-300 whitespace-pre-wrap leading-relaxed">Product
+                        description.</p>
+                </div>
+                <div class="mt-auto pt-3 border-t border-gray-700 flex-shrink-0">
+                    <div id="seller-info-block" class="mb-4">
+                        <h4 class="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-2">Seller Information</h4>
+                        <div class="flex items-center space-x-3 bg-gray-800/50 p-2 rounded-lg border border-gray-700"><img id="detail-seller-pic"
+                                src="" class="h-8 w-8 rounded-full object-cover shadow-sm">
+                            <div class="flex-grow min-w-0">
+                                <p id="detail-seller-name" class="text-gray-200 font-semibold text-xs truncate">Seller Name</p>
+                                <p id="detail-phone" class="text-gray-400 text-[10px] hidden">Contact Hidden</p>
+                            </div>
+                            <div class="flex flex-col items-end gap-1"><button id="admin-view-profile-btn"
+                                    class="hidden text-purple-400 text-[9px] hover:underline">View</button><button id="admin-ban-btn"
+                                    class="hidden bg-red-600 hover:bg-red-700 text-white text-[9px] px-1.5 py-0.5 rounded font-bold uppercase tracking-wider">BAN</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="action-buttons-container" class="grid grid-cols-1 gap-2"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="message-modal"
+        class="hidden fixed inset-0 bg-black bg-opacity-70 z-50 flex items-center justify-center modal p-4">
+        <div id="message-modal-content"
+            class="bg-gray-900 border border-purple-500 rounded-lg shadow-xl p-8 w-full max-w-sm text-center">
+            <h2 id="message-title" class="text-2xl font-bold text-purple-400 mb-4">Notification</h2>
+            <p id="message-body" class="text-gray-300 mb-6">Message body.</p>
+            <button
+                class="close-modal-btn w-full bg-purple-accent text-white py-2 rounded-lg hover:bg-purple-accent-dark transition duration-300"
+                data-modal-id="message-modal">OK</button>
+        </div>
+    </div>
+
+    <div id="banned-modal"
+        class="hidden fixed inset-0 z-[110] bg-black bg-opacity-95 flex items-center justify-center p-4">
+        <div
+            class="bg-red-900 border-2 border-red-600 text-white p-8 rounded-xl shadow-2xl w-full max-w-md text-center">
+            <button class="close-modal-btn absolute top-4 right-4 text-gray-400 hover:text-white z-50" data-modal-id="banned-modal"><i data-lucide="x"></i></button>
+            <h2 class="text-3xl font-extrabold mb-4">ACCESS DENIED</h2>
+            <p class="text-lg mb-6">Your profile is removed from Apperture by admin due to inappropriate things in
+                server.</p>
+            <p class="text-sm text-red-300">You cannot access this platform.</p>
+        </div>
+    </div>
+
+    <div id="welcome-modal"
+        class="fixed inset-0 z-[100] flex items-center justify-center bg-gray-900 bg-opacity-95 p-4">
+        <div
+            class="bg-white text-gray-800 p-6 rounded-2xl shadow-2xl w-full max-w-md relative border-t-4 border-purple-600 animate-modal-in">
+            <button class="close-modal-btn absolute top-4 right-4 text-gray-400 hover:text-white z-50" data-modal-id="welcome-modal"><i data-lucide="x"></i></button>
+            <div class="mb-4 border-b pb-2">
+                <h2 class="text-2xl font-bold text-purple-700">Apperture Community</h2>
+            </div>
+            <div class="space-y-3 text-sm text-gray-600 max-h-[300px] overflow-y-auto pr-2"
+                style="scrollbar-width: thin;">
+                <p>By using this website, you agree to share only genuine and accurate information.</p>
+                <p>You're also intended to stay in community guidelines.</p>
+                <p>Please maintain a respectful environment. No abuses, foul language, or inappropriate content.</p>
+                <p class="font-semibold text-red-600">Please stay alert and beware of scams or misleading offers.</p>
+                <p>Users are advised to verify details before taking any action.</p>
+                <p class="font-bold text-purple-600 mt-2">You are being supervised by the admin.</p>
+                <p class="font-bold text-blue-600 mt-1 italic flex items-center">
+                    <i data-lucide="shield-check" class="w-4 h-4 mr-2"></i>
+                    You are being supervised by Super Nexus Encryption Fraud Detector AI.
+                </p>
+                <p class="font-bold text-purple-600 mt-2">Thank you, and enjoy exploring “Apperture.”</p>
+            </div>
+            <button id="accept-welcome-btn"
+                class="mt-6 w-full py-2 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-lg transition duration-200">I
+                Agree & Enter</button>
+        </div>
+    </div>
+
+    <script>
+        
+        
+        // --- APPERTURE BACKEND INTEGRATION ---
+                        
+        
+        let API_BASE = "";
+        const detectAPI = async () => {
+            const hn = window.location.hostname;
+            const pt = window.location.port;
+            const pr = window.location.protocol;
+            
+            const candidates = [
+                "", // Same origin (Cloud)
+                "http://127.0.0.1:8000",
+                "http://localhost:8000",
+                window.location.origin.replace(":" + pt, ":8000"),
+                window.location.origin.replace("-3000", "-8000")
+            ];
+            
+            for (let c of candidates) {
+                try {
+                    const controller = new AbortController();
+                    const timeoutId = setTimeout(() => controller.abort(), 1000);
+                    const r = await fetch(c + "/profile", { 
+                        headers: { 'X-User-Id': 'probe' },
+                        signal: controller.signal
+                    });
+                    if (r.ok) {
+                        API_BASE = c;
+                        console.log("Connected to Backend:", c);
+                        document.getElementById('backend-status')?.classList.remove('bg-red-500');
+                        document.getElementById('backend-status')?.classList.add('bg-green-500');
+                        return;
+                    }
+                } catch(e) {}
+            }
+            console.error("Backend unreachable. Ensure python3 backend.py is running.");
+        };
+
+
+
+        const db = { placeholder: true };
+        const appId = "apperture";
+        
+        let currentUserId;
+        try {
+            currentUserId = localStorage.getItem('apperture_user_id');
+        } catch(e) {
+            currentUserId = null;
+        }
+        
+        if (!currentUserId) {
+            currentUserId = 'user_' + Math.random().toString(36).substr(2, 9);
+            try {
+                localStorage.setItem('apperture_user_id', currentUserId);
+            } catch(e) {
+                console.warn("LocalStorage blocked, sessions will not persist.");
+            }
+        }
+
+        async function fetchAPI(endpoint, method = 'GET', body = null) {
+            if (!currentUserId && endpoint !== '/profile') {
+                await new Promise(r => setTimeout(r, 500));
+            }
+            const headers = {
+                'Content-Type': 'application/json',
+                'X-User-Id': currentUserId || 'guest'
+            };
+            const config = { method, headers };
+            if (body) config.body = JSON.stringify(body);
+            
+            try {
+                const response = await fetch(`${API_BASE}${endpoint}`, config);
+                if (!response.ok) {
+                    let msg = 'API Error';
+                    try { const errData = await response.json(); msg = errData.detail || msg; } catch(e) {}
+                    throw new Error(msg);
+                }
+                return await response.json();
+            } catch (err) {
+                if (err.name === 'TypeError') {
+                    console.error("Connectivity Issue: Backend unreachable. URL:", `${API_BASE}${endpoint}`);
+                }
+                throw err;
+            }
+        }
+
+        const wrapData = (d) => {
+            if (!d || typeof d !== 'object') return d;
+            if (Array.isArray(d)) return d.map(wrapData);
+            const wrapped = { ...d };
+            
+            // Map common DB fields to Frontend CamelCase properties efficiently
+            for (let key in d) {
+                const lowerKey = key.toLowerCase();
+                if ((lowerKey.includes('timestamp') || lowerKey.includes('_at') || lowerKey.includes('scheduled_for') || lowerKey.includes('starttime') || lowerKey.includes('endtime')) && typeof d[key] === 'number') {
+                    const val = d[key];
+                    const ms = val < 10000000000 ? val * 1000 : val;
+                    const tsObj = { toMillis: () => ms };
+                    wrapped[key] = tsObj;
+                    if (key === 'scheduled_for') wrapped.scheduledFor = tsObj;
+                    if (key === 'start_time') wrapped.startTime = tsObj;
+                    if (key === 'end_time') wrapped.endTime = tsObj;
+                    if (key === 'created_at') wrapped.timestamp = tsObj;
+                } else {
+                    wrapped[key] = wrapData(d[key]);
+                }
+            }
+
+            // Marketplace field mappings
+            if (wrapped.seller_id) wrapped.sellerId = wrapped.seller_id;
+            if (wrapped.seller_name) wrapped.sellerName = wrapped.seller_name;
+            if (wrapped.is_magnetic !== undefined) wrapped.isMagnetic = !!wrapped.is_magnetic;
+            if (wrapped.is_ad !== undefined) wrapped.isAd = !!wrapped.is_ad;
+            if (wrapped.is_gem_boosted !== undefined) wrapped.isGemBoosted = !!wrapped.is_gem_boosted;
+            if (wrapped.stars_count !== undefined) wrapped.stars = wrapped.stars_count;
+
+            // Image handling
+            if (wrapped.image_data) {
+                try {
+                    const imgs = JSON.parse(wrapped.image_data);
+                    if (Array.isArray(imgs)) {
+                        wrapped.images = imgs;
+                        wrapped.image = imgs[0];
+                    } else {
+                        wrapped.images = [wrapped.image_data];
+                        wrapped.image = wrapped.image_data;
+                    }
+                } catch(e) {
+                    wrapped.images = [wrapped.image_data];
+                    wrapped.image = wrapped.image_data;
+                }
+            }
+
+            // Chat participants mapping
+            if (wrapped.user1_id && wrapped.user2_id) {
+                wrapped.participants = [wrapped.user1_id, wrapped.user2_id];
+                wrapped.names = [wrapped.user1_name, wrapped.user2_name];
+            }
+
+            // Property aliases
+            if (wrapped.seller_id) wrapped.sellerId = wrapped.seller_id;
+            if (wrapped.seller_name) wrapped.sellerName = wrapped.seller_name;
+            if (wrapped.seller_pic) wrapped.sellerPic = wrapped.seller_pic;
+            if (wrapped.is_magnetic !== undefined) wrapped.isMagnetic = !!wrapped.is_magnetic;
+            if (wrapped.is_ad !== undefined) wrapped.isAd = !!wrapped.is_ad;
+            if (wrapped.is_gem_boosted !== undefined) wrapped.isGemBoosted = !!wrapped.is_gem_boosted;
+            if (wrapped.stars_count !== undefined) wrapped.starsCount = wrapped.stars_count;
+            if (wrapped.ad_link) wrapped.link = wrapped.ad_link;
+            
+            // Normalize timestamps
+            const tsFields = ['timestamp', 'scheduled_for', 'expires_at', 'start_time', 'end_time', 'created_at'];
+            tsFields.forEach(f => {
+                if (wrapped[f]) {
+                    if (typeof wrapped[f] === 'object' && wrapped[f].toMillis) {
+                        wrapped[f] = wrapped[f].toMillis() / 1000;
+                    }
+                }
+            });
+
+            return wrapped;
+        };
+
+        const doc = (db, ...args) => ({ path: '/' + args.filter(a => (typeof a === 'string' || typeof a === 'number') && !['artifacts', 'public', 'data', 'users', 'profile'].includes(a)).join('/'), type: 'doc' });
+        const collection = (db, ...args) => ({ path: '/' + args.filter(a => (typeof a === 'string' || typeof a === 'number') && !['artifacts', 'public', 'data', 'users', 'profile'].includes(a)).join('/'), type: 'collection' });
+        
+        async function addDoc(ref, data) {
+            let path = ref.path || "";
+            const payload = { ...data };
+            if (payload.image && !payload.image_data) payload.image_data = payload.image;
+            
+            // Flexible path matching to handle /apperture/chats etc.
+            if (path.endsWith('/listings')) return await fetchAPI('/listings', 'POST', payload);
+            if (path.endsWith('/cart')) return await fetchAPI('/cart', 'POST', { listing_id: data.listingId, title: data.title, price: data.price, image: data.image });
+            if (path.includes('/messages')) {
+                const parts = path.split('/');
+                const chatId = parts[parts.indexOf('messages') - 1];
+                return await fetchAPI(`/chats/${chatId}/messages`, 'POST', { text: data.text });
+            }
+            if (path.endsWith('/chats')) return await fetchAPI('/chats', 'POST', {
+                participants: data.participants,
+                names: data.names,
+                lastMessage: data.lastMessage || "Chat started"
+            });
+            if (path.endsWith('/notifications')) return await fetchAPI('/notifications', 'POST', { message: data.message, type: data.type, recipient_id: data.recipient_id });
+            if (path.endsWith('/supreme_bookings')) return await fetchAPI('/ads/supreme', 'POST', { slot_id: data.slot, title: data.title, category: data.category, image_data: data.image, ad_copy: data.adCopy });
+            
+            console.warn("Unknown collection in addDoc:", path);
+            return null;
+        }
+
+        async function setDoc(ref, data, opt) {
+            if (ref.path === '/data') { // Profile update
+                return await fetchAPI('/profile', 'PUT', { id: currentUserId, name: data.name, phone: data.phone, profile_pic: data.profilePic, address: data.address, banned: data.banned });
+            }
+            if (data.banned && userProfile.isAdmin) {
+                const parts = ref.path.split('/');
+                const userId = parts[parts.indexOf('users') + 1];
+                if (userId) return await fetchAPI(`/admin/ban/${userId}`, 'POST');
+            }
+        }
+
+        async function deleteDoc(ref) {
+            let path = ref.path;
+            const parts = path.split('/');
+            const id = parts.pop();
+            if (path.includes('/listings/')) { await fetchAPI(`/listings/${id}`, 'DELETE'); runSync(); return; }
+            if (path.includes('/cart/')) return await fetchAPI(`/cart/${id}`, 'DELETE');
+        }
+
+        async function getDocs(q) {
+            const data = await fetchAPI(q.path);
+            return {
+                forEach: (fn) => data.forEach(item => fn({ id: item.id, data: () => wrapData(item) })),
+                empty: data.length === 0
+            };
+        }
+
+        function onSnapshot(ref, cb) {
+            let path = ref.path;
+            // Robust mapping to backend routes
+            if (path.includes('/listings')) path = '/listings';
+            else if (path.includes('/chats/') && path.includes('/messages')) {
+                const parts = path.split('/');
+                const chatId = parts[parts.indexOf('chats') + 1];
+                path = `/chats/${chatId}/messages`;
+            }
+            else if (path.includes('/chats')) path = '/chats';
+            else if (path.includes('/notifications')) path = '/notifications';
+            else if (path === '/data') path = '/profile';
+            else if (path.includes('/supreme_bookings')) {
+                const cat = document.getElementById('category-filter') ? document.getElementById('category-filter').value : "All";
+                path = `/ads/supreme?category=${cat}`;
+            }
+            else if (path.endsWith('/cart')) path = '/cart';
+            
+            let active = true;
+            const poll = async () => {
+                // Bolt Optimization: Skip polling if tab is hidden to save battery and reduce server load
+                if (!active || document.hidden) return;
+                
+                try {
+                    const data = await fetchAPI(path);
+                    if (Array.isArray(data)) {
+                        cb({ 
+                            forEach: (fn) => data.forEach(item => fn({ id: item.id, data: () => wrapData(item) })),
+                            empty: data.length === 0,
+                            size: data.length
+                        });
+                    } else {
+                        cb({ exists: () => !!data, data: () => wrapData(data) });
+                    }
+                } catch (e) { console.error(`SNAPSHOT Error [${path}]:`, e); }
+            };
+
+            poll();
+            const interval = setInterval(poll, 4000);
+
+            // Immediate poll when user switches back to tab
+            const handleVisibility = () => { if (!document.hidden) poll(); };
+            document.addEventListener('visibilitychange', handleVisibility);
+
+            return () => {
+                active = false;
+                clearInterval(interval);
+                document.removeEventListener('visibilitychange', handleVisibility);
+            };
+        }
+
+        const query = (ref) => ref;
+        const where = () => {};
+        const orderBy = () => {};
+        const serverTimestamp = () => Date.now() / 1000;
+        const Timestamp = { fromMillis: (ms) => ({ toMillis: () => ms }) };
+
+        let currentUser = { uid: currentUserId };
+        let userProfile = { name: "User", phone: "", isAdmin: false, banned: false, profilePic: "https://placehold.co/100x100/1a1a1a/FFFFFF?text=User" };
+        let currentChatId = null;
+
+        const BAD_WORDS_MAP = {
+            en: ["badword1", "badword2", "abuse", "violent", "vulgar", "slang", "bad", "foul", "kill", "hate", "idiot", "stupid", "scam", "fraud", "shit", "fuck", "bitch", "ass", "damn", "crap", "sex", "nude", "porn", "weapon", "gun", "drug", "weed", "terror", "bomb", "racist", "nazi", "slave", "rape", "murder", "suicide", "die", "death"],
+            hi: ["gali1", "gali2"],
+            es: ["palabra1"]
+        };
+
+        function applyAISecurity(text) {
+            if (!text || userProfile.isAdmin) return text;
+            let processed = text;
+            for (let lang in BAD_WORDS_MAP) {
+                BAD_WORDS_MAP[lang].forEach(word => {
+                    const regex = new RegExp(word, "gi");
+                    processed = processed.replace(regex, "***");
+                });
+            }
+            if (processed !== text) {
+                showMessage("⚠️ Inappropriate text detected and filtered.");
+            }
+            return processed;
+        }
+
+        function validateImage(file) {
+            if (!file) return true;
+            if (!file.type.startsWith("image/")) {
+                showMessage("❌ Invalid file type. Please upload an image.");
+                return false;
+            }
+            if (file.size > 2 * 1024 * 1024) {
+                showMessage("❌ Image too large (max 2MB).");
+                return false;
+            }
+            return true;
+        }
+
+        async function initApp() {
+            await loadUserProfile();
+            setupListeners();
+        }
+
+        async function loadUserProfile() {
+            try {
+                const data = await fetchAPI('/profile');
+                userProfile = { 
+                    name: data.name, 
+                    isAdmin: data.is_admin >= 1,
+                    isPrimaryAdmin: data.is_admin === 2,
+                    adminLevel: data.is_admin || 0,
+                    banned: data.is_banned === 1 || data.is_banned === true, 
+                    profilePic: data.profile_pic || "https://placehold.co/100x100/1a1a1a/FFFFFF?text=U",
+                    phone: data.phone,
+                    stars: data.stars_balance || 0,
+                    gems: data.gems_balance || 0,
+                    tickets: data.tickets_balance || 0,
+                    address: data.address || "",
+                    password: data.password || "",
+                    isVerified: !!(data.name && data.name !== "New User" && data.address && data.password) || (data.is_admin > 0)
+                };
+                if (userProfile.banned) {
+                    document.getElementById('banned-modal').classList.remove('hidden');
+                }
+                updateProfileUI();
+            } catch (e) { }
+        }
+        // Bolt Optimization: Cache profanity results to avoid redundant O(N*M) lookups
+        const profanityCache = new Map();
+        function containsProfanity(text) {
+            if (!text) return false;
+            const lowerText = text.toLowerCase().trim();
+            if (profanityCache.has(lowerText)) return profanityCache.get(lowerText);
+            
+            const allBadWords = Object.values(BAD_WORDS_MAP).flat();
+            const result = allBadWords.some(word => lowerText.includes(word.toLowerCase()));
+            
+            // Limit cache size to avoid memory leaks
+            if (profanityCache.size > 1000) profanityCache.clear();
+            profanityCache.set(lowerText, result);
+            return result;
+        }
+
+        function validateInput(text) {
+            if (userProfile.isAdmin) return true;
+            if (containsProfanity(text)) {
+                showMessage("Security Alert: Content blocked due to restricted words/content.");
+                return false;
+            }
+            return true;
+        }
+
+
+        function updateProfileUI() {
+            const adminTag = userProfile.isPrimaryAdmin ? ' <span class="text-red-500 text-[10px] bg-red-950 px-2 py-0.5 rounded border border-red-500/50">PRIMARY ADMIN</span>' : (userProfile.isAdmin ? ' <span class="text-purple-400 text-[10px] bg-purple-950 px-2 py-0.5 rounded border border-purple-500/50">CO-ADMIN</span>' : '');
+            const verifiedTag = userProfile.isVerified ? ' <span class="text-green-400 text-[10px] bg-green-950 px-2 py-0.5 rounded border border-green-500/50 ml-1">VERIFIED</span>' : ' <span class="text-gray-400 text-[10px] bg-gray-800 px-2 py-0.5 rounded border border-gray-700 ml-1">UNVERIFIED</span>';
+            document.getElementById('profile-name-display').innerHTML = userProfile.name + adminTag + verifiedTag;
+            document.getElementById('profile-pic-display').src = userProfile.profilePic;
+            document.getElementById('edit-name').value = userProfile.name;
+            
+            // Update Quick Balance
+            const qS = document.getElementById('q-stars'), qG = document.getElementById('q-gems'), qT = document.getElementById('q-tickets');
+            if(qS) {
+                const isInf = userProfile.isPrimaryAdmin;
+                qS.textContent = isInf ? '∞' : (userProfile.stars || 0);
+                qG.textContent = isInf ? '∞' : (userProfile.gems || 0);
+                qT.textContent = isInf ? '∞' : (userProfile.tickets || 0);
+                document.getElementById('quick-balance').classList.remove('hidden');
+            }
+            const editAddress = document.getElementById('edit-address');
+            if (editAddress) editAddress.value = userProfile.address || "";
+            
+            // Display Balances
+            let balanceContainer = document.getElementById('profile-balance-container');
+            if (!balanceContainer) {
+                balanceContainer = document.createElement('div');
+                balanceContainer.id = 'profile-balance-container';
+                balanceContainer.className = 'mt-4 flex space-x-4 text-sm font-semibold';
+                const parent = document.getElementById('profile-name-display').parentNode;
+                if (parent) parent.appendChild(balanceContainer);
+            }
+            if (balanceContainer) {
+                const isInf = userProfile.isPrimaryAdmin;
+                const s = isInf ? '∞' : (userProfile.stars || 0);
+                const g = isInf ? '∞' : (userProfile.gems || 0);
+                const t = isInf ? '∞' : (userProfile.tickets || 0);
+                balanceContainer.className = 'mt-6 grid grid-cols-3 gap-4 sticky top-0 bg-gray-900/90 backdrop-blur pb-4 z-10';
+                balanceContainer.innerHTML = `
+                    <div class="bg-gray-800 p-3 rounded-xl border border-yellow-600/30 flex flex-col items-center">
+                        <span class="text-xs text-gray-500 uppercase font-bold mb-1">Stars</span>
+                        <div class="text-xl font-black text-yellow-500 flex items-center"><i data-lucide="star" class="w-5 h-5 mr-1 fill-current"></i> ${s}</div>
+                    </div>
+                    <div class="bg-gray-800 p-3 rounded-xl border border-green-600/30 flex flex-col items-center">
+                        <span class="text-xs text-gray-500 uppercase font-bold mb-1">Gems</span>
+                        <div class="text-xl font-black text-green-500 flex items-center"><i data-lucide="gem" class="w-5 h-5 mr-1"></i> ${g}</div>
+                    </div>
+                    <div class="bg-gray-800 p-3 rounded-xl border border-blue-600/30 flex flex-col items-center">
+                        <span class="text-xs text-gray-500 uppercase font-bold mb-1">Tickets</span>
+                        <div class="text-xl font-black text-blue-500 flex items-center"><i data-lucide="ticket" class="w-5 h-5 mr-1"></i> ${t}</div>
+                    </div>
+                `;
+                if (window.lucide) window.lucide.createIcons();
+            }
+
+            // Security: Admin Check
+            const specialOpt = document.getElementById('special-cat-option');
+            const sellSpecialOpt = document.getElementById('sell-special-cat');
+            const magSpecialOpt = document.getElementById('mag-special-cat');
+
+            if (userProfile.isAdmin) {
+                document.getElementById('admin-badge').classList.remove('hidden');
+                document.getElementById('admin-notification-panel').classList.remove('hidden');
+                document.getElementById('admin-message-input').classList.remove('hidden');
+                document.getElementById('user-message-select').classList.add('hidden');
+                if (specialOpt) specialOpt.classList.remove('hidden');
+                if (sellSpecialOpt) sellSpecialOpt.classList.remove('hidden');
+                if (magSpecialOpt) magSpecialOpt.classList.remove('hidden');
+            } else {
+                document.getElementById('admin-badge').classList.add('hidden');
+                document.getElementById('admin-notification-panel').classList.add('hidden');
+                document.getElementById('admin-message-input').classList.add('hidden');
+                document.getElementById('user-message-select').classList.remove('hidden');
+                if (specialOpt) specialOpt.classList.add('hidden');
+                if (sellSpecialOpt) sellSpecialOpt.classList.add('hidden');
+                if (magSpecialOpt) magSpecialOpt.classList.add('hidden');
+            }
+        }
+
+        const ADMIN_SECRET_KEY = "divyanshgupta.Apperture.Elderweb.com@passkey142682920252717";
+        const CO_ADMIN_KEYS = [
+            "naman.ronaldo.siue.12344",
+            "sanyam.bro.passkey@!#$%#&^%((}",
+            "Passkey.co.admin@apperture.siuuee._12221117",
+            "Passkey.Cricket.madhav.bro.@@paskkey-siuuuuue.",
+            "Siiiiiiue.passkey#@@big.dawgs//@!234455.Tehlka-Omelelte."
+        ];
+        
+        document.getElementById('edit-profile-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            let newName = document.getElementById('edit-name').value.trim();
+            const newAddress = document.getElementById('edit-address').value.trim();
+            const fileInput = document.getElementById('edit-profile-pic');
+
+            const isSecret = newName === ADMIN_SECRET_KEY || CO_ADMIN_KEYS.includes(newName) || newName.startsWith('APERTURE-REWARD-');
+
+            if (isSecret) {
+                userProfile.name = newName; // Send raw key/coupon to backend
+                userProfile.address = newAddress;
+            } else {
+                if (!validateInput(newName) || !validateInput(newAddress)) return;
+                userProfile.name = applyAISecurity(newName); 
+                userProfile.address = applyAISecurity(newAddress);
+            }
+
+            if (fileInput.files.length > 0) {
+                const file = fileInput.files[0];
+                if (!validateImage(file)) { return; }
+                const reader = new FileReader();
+                reader.onload = async (e) => {
+                    userProfile.profilePic = e.target.result;
+                    await saveProfile();
+                };
+                reader.readAsDataURL(file);
+            } else {
+                await saveProfile();
+            }
+        });
+
+        async function saveProfile() {
+            const res = await fetchAPI('/profile', 'PUT', { id: currentUser.uid, name: userProfile.name, phone: userProfile.phone, profile_pic: userProfile.profilePic, address: userProfile.address, password: userProfile.password });
+            if (res.reward) showMessage(res.reward);
+            await loadUserProfile(); // Refresh data
+            closeModal('edit-profile-modal');
+            if (!res.reward) showMessage("Profile Updated Successfully.");
+        }
+
+        const sellForm = document.getElementById('sell-form');
+        const fileInput = document.getElementById('sell-image');
+        const previewsContainer = document.getElementById('sell-image-previews');
+        let imagesArray = [];
+
+        fileInput.addEventListener('change', () => {
+            const files = Array.from(fileInput.files);
+            document.getElementById('image-error-msg').classList.add('hidden');
+            
+            files.forEach(file => {
+                if (!validateImage(file)) {
+                    document.getElementById('image-error-msg').classList.remove('hidden');
+                    return;
+                }
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    const container = document.createElement('div');
+                    container.className = "relative group";
+                    
+                    const img = document.createElement('img');
+                    img.src = e.target.result;
+                    img.className = "w-20 h-20 object-cover rounded border border-gray-700 shadow-sm";
+                    
+                    const removeBtn = document.createElement('button');
+                    removeBtn.className = "absolute -top-2 -right-2 bg-red-600 text-white rounded-full w-5 h-5 flex items-center justify-center opacity-0 group-hover:opacity-100 transition shadow-lg z-10";
+                    removeBtn.innerHTML = '<i data-lucide="x" class="w-3 h-3 text-white"></i>';
+                    removeBtn.type = "button";
+                    removeBtn.onclick = (event) => {
+                        event.preventDefault();
+                        container.remove();
+                        const index = imagesArray.indexOf(e.target.result);
+                        if (index > -1) imagesArray.splice(index, 1);
+                    };
+                    
+                    container.appendChild(img);
+                    container.appendChild(removeBtn);
+                    previewsContainer.appendChild(container);
+                    imagesArray.push(e.target.result);
+                    if (window.lucide) window.lucide.createIcons();
+                };
+                reader.readAsDataURL(file);
+            });
+        });
+
+        sellForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            if (!currentUser) return showMessage("Please wait for login...");
+            if (userProfile.banned) return;
+            const title = applyAISecurity(document.getElementById('sell-title').value);
+            const desc = applyAISecurity(document.getElementById('sell-description').value);
+            if (!validateInput(title) || !validateInput(desc)) return;
+            if (imagesArray.length === 0) return showMessage("Please upload at least one image.");
+
+            const btn = document.getElementById('submit-sell-btn');
+            btn.innerHTML = `<span class="flex items-center justify-center"><i data-lucide="shield" class="w-4 h-4 mr-2 animate-spin"></i> Super Nexus Security Scan...</span>`; 
+            btn.disabled = true;
+            if (window.lucide) window.lucide.createIcons();
+
+            try {
+                const listing_address = document.getElementById('sell-address').value || userProfile.address;
+                await addDoc(collection(db, 'artifacts', appId, 'public', 'data', 'listings'), {
+                    title: title,
+                    category: document.getElementById('sell-category').value,
+                    condition: document.getElementById('sell-condition').value,
+                    price: parseFloat(document.getElementById('sell-price').value),
+                    currency: document.getElementById('sell-currency').value,
+                    phone: document.getElementById('sell-phone').value,
+                    address: listing_address,
+                    description: desc,
+                    images: imagesArray,
+                    sellerId: currentUser.uid,
+                    sellerName: userProfile.name,
+                    sellerPic: userProfile.profilePic,
+                    timestamp: serverTimestamp(),
+                    isMagnetic: false,
+                    isAd: false
+                });
+                closeModal('sell-modal'); 
+                showMessage("Item listed successfully! You can also star 20x your own listing using multiple differen't devices for free."); 
+                sellForm.reset(); 
+                previewsContainer.innerHTML = ""; 
+                imagesArray = [];
+            } catch (err) { 
+                console.error(err); 
+                showMessage(err.message || "Error listing item."); 
+            } finally { 
+                btn.textContent = "List Item"; 
+                btn.disabled = false; 
+                if (window.lucide) window.lucide.createIcons();
+            }
+        });
+
+        let allListings = [];
+        let magneticListings = [];
+        let myScheduledAds = [];
+        let allNotifications = [];
+        let allBookings = [];
+
+        let syncInterval;
+        async function runSync() {
+            if (document.hidden || userProfile.banned) return;
+            
+            try {
+                const cat = document.getElementById('category-filter') ? document.getElementById('category-filter').value : "All";
+                const data = await fetchAPI('/sync', 'POST', { 
+                    user_id: currentUserId,
+                    category: cat
+                });
+                
+                // 1. Process Listings
+                allListings = []; magneticListings = [];
+                const myGrid = document.getElementById('my-listings-container');
+                myGrid.innerHTML = "";
+                let myCount = 0; const now = Date.now();
+
+                data.listings.forEach(item_raw => {
+                    const item = wrapData(item_raw);
+                    const created = item.timestamp ? item.timestamp.toMillis() : now;
+                    let isExpired = false;
+                    if (item.isAd && now > created + 86400000) isExpired = true;
+
+                    if (!isExpired) {
+                        if (item.isMagnetic) magneticListings.push(item);
+                        else allListings.push(item);
+
+                        if (item.sellerId === currentUserId) {
+                            const card = createProductCard(item.id, item, true); 
+                            const boostBtn = document.createElement("button"); 
+                            boostBtn.className = "mt-2 w-full bg-green-600 text-white py-1 rounded text-xs font-bold"; 
+                            boostBtn.textContent = item.isMagnetic ? "ALREADY BOOSTED" : "Boost with 15 Gems"; 
+                            boostBtn.disabled = item.isMagnetic;
+                            boostBtn.onclick = async () => { 
+                                try {
+                                    await fetchAPI(`/listings/${item.id}/boost`, 'POST');
+                                    showMessage("Applied Gem Boost!");
+                                } catch(e) { showMessage(e.message); }
+                            }; 
+                            card.appendChild(boostBtn); myGrid.appendChild(card);
+                            myCount++;
+                        }
+                    }
+                });
+                allListings.sort((a, b) => (b.timestamp?.toMillis() || 0) - (a.timestamp?.toMillis() || 0));
+                if (myCount === 0) myGrid.innerHTML = '<p class="text-gray-400 col-span-full">You haven\'t listed any items yet.</p>';
+                renderGrid();
+
+                // 2. Process Supreme Ads
+                allBookings = data.supreme_ads.map(wrapData);
+                updateSupremeAdsDisplay();
+
+                // 3. Process Cart
+                const cartList = document.getElementById('cart-items');
+                const cartTotalEl = document.getElementById('cart-total');
+                const cartBadge = document.getElementById('cart-count');
+                cartList.innerHTML = ""; let total = 0;
+
+                data.cart.forEach(item_raw => {
+                    const item = wrapData(item_raw);
+                    total += (item.price || 0);
+                    const el = document.createElement('div');
+                    el.className = "flex justify-between items-center bg-gray-800 p-3 rounded-lg border border-gray-700";
+                    el.innerHTML = `
+                        <div class="flex items-center space-x-3">
+                            <img src="${item.image}" class="w-12 h-12 rounded object-cover">
+                            <div>
+                                <p class="font-bold text-sm text-white truncate w-32">${item.title}</p>
+                                <p class="text-xs text-purple-400">₹${item.price}</p>
+                            </div>
+                        </div>
+                        <button class="text-red-400 delete-cart-btn" data-id="${item.id}"><i data-lucide="trash-2" class="w-4 h-4"></i></button>`;
+                    cartList.appendChild(el);
+                });
+                if (data.cart.length === 0) cartList.innerHTML = '<p class="text-gray-400 text-center py-4">Your cart is empty.</p>';
+                cartTotalEl.textContent = total.toFixed(2);
+                const floatCartBadge = document.getElementById('float-cart-count');
+                [cartBadge, floatCartBadge].forEach(el => {
+                    if (el) {
+                        el.textContent = data.cart.length;
+                        el.classList.toggle('hidden', data.cart.length === 0);
+                    }
+                });
+
+                // 4. Process Notifications
+                allNotifications = []; myScheduledAds = [];
+                data.notifications.forEach(n_raw => {
+                    const n = wrapData(n_raw);
+                    const scheduledFor = n.displayTime = n.scheduledFor ? n.scheduledFor.toMillis() : 0;
+                    if (now >= scheduledFor) allNotifications.push(n);
+                    if (n.poster_id === currentUserId) {
+                        myScheduledAds.push({ ...n, status: now >= scheduledFor ? "Active" : "Scheduled" });
+                    }
+                });
+                allNotifications.sort((a, b) => b.displayTime - a.displayTime);
+                updateNotificationDisplay();
+                updateNotificationModal();
+                updateMyScheduledAdsList();
+
+                // 5. Process Chats metadata
+                myChats = data.chats.map(wrapData);
+                updateChatContactListUI();
+                
+                // 6. Refresh User Profile stats
+                const p = data.profile;
+                userProfile.stars = p.stars_balance;
+                userProfile.gems = p.gems_balance;
+                userProfile.tickets = p.tickets_balance;
+                userProfile.isAdmin = !!p.is_admin;
+                updateProfileUI();
+
+                if (window.lucide) window.lucide.createIcons();
+
+            } catch (err) { console.error("Sync Error:", err); }
+        }
+
+        function setupListeners() {
+            if (userProfile.banned) return;
+            runSync();
+            syncInterval = setInterval(runSync, 4000);
+            
+            // Delete Cart Item Event (Delegation)
+            document.getElementById('cart-items').addEventListener('click', async (e) => {
+                const btn = e.target.closest('.delete-cart-btn');
+                if (btn) {
+                    e.stopPropagation();
+                    await fetchAPI(`/cart/${btn.dataset.id}`, 'DELETE');
+                    runSync();
+                }
+            });
+            
+            // Start message poll if a chat is active
+            setInterval(pollActiveChat, 3000);
+        }
+
+        // --- Supreme Ads Timer Logic ---
+        function updateSupremeAdsDisplay() {
+            const now = Date.now();
+            ['slot1', 'slot2', 'slot3'].forEach(slotId => {
+                const titleEl = document.getElementById(`supreme-title-${slotId}`);
+                const contentEl = document.getElementById(`supreme-content-${slotId}`);
+                const timerEl = document.getElementById(`timer-${slotId}`);
+
+                // Find currently active booking
+                const activeAd = allBookings.find(d => {
+                    const start = d.startTime?.toMillis() || 0;
+                    const end = d.endTime?.toMillis() || 0;
+                    return d.slot === slotId && now >= start && now < end;
+                });
+
+                // Find next upcoming booking for timer
+                const upcomingAd = allBookings.find(d => {
+                    const start = d.startTime?.toMillis() || 0;
+                    return d.slot === slotId && start > now;
+                });
+
+                if (activeAd) {
+                    titleEl.textContent = activeAd.title;
+                    contentEl.innerHTML = `
+                        <div class="relative w-full h-full group cursor-pointer border-2 border-purple-accent rounded-lg overflow-hidden shadow-2xl">
+                            <img src="${activeAd.image}" class="w-full h-full object-cover">
+                            <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition duration-300 flex items-center justify-center">
+                                <p class="text-white opacity-0 group-hover:opacity-100 font-bold p-2 text-center drop-shadow-md">${activeAd.adCopy}</p>
+                            </div>
+                            <div class="absolute bottom-2 right-2 bg-green-600 text-[10px] px-2 py-0.5 rounded text-white font-bold animate-pulse">LIVE</div>
+                        </div>`;
+                    const timeLeft = Math.max(0, (activeAd.endTime.toMillis() - now) / 1000);
+                    const hrs = Math.floor(timeLeft / 3600);
+                    const mins = Math.floor((timeLeft % 3600) / 60);
+                    timerEl.textContent = `SHARP EXECUTION: Ends in ${hrs}h ${mins}m`;
+                    timerEl.className = "text-xs text-green-400 mt-2 font-mono font-bold";
+                } else {
+                    titleEl.textContent = upcomingAd ? "COMING SOON" : `Ad Space ${slotId.replace('slot', '')}`;
+                    
+                    if (upcomingAd) {
+                        contentEl.innerHTML = `
+                        <div class="relative w-full h-full border-2 border-gray-700 rounded-lg overflow-hidden opacity-50 grayscale">
+                            <img src="${upcomingAd.image}" class="w-full h-full object-cover">
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <p class="bg-black/60 text-white text-[10px] font-bold px-3 py-1 rounded">STARTING SOON</p>
+                            </div>
+                        </div>`;
+                        const startWait = Math.max(0, (upcomingAd.startTime.toMillis() - now) / 1000);
+                        const hrs = Math.floor(startWait / 3600);
+                        const mins = Math.floor((startWait % 3600) / 60);
+                        const secs = Math.floor(startWait % 60);
+                        timerEl.textContent = `SHARP START IN: ${hrs}h ${mins}m ${secs}s`;
+                        timerEl.className = "text-xs text-yellow-500 mt-2 font-mono font-bold";
+                    } else {
+                        contentEl.innerHTML = `
+                            <button class="ad-link-btn w-full h-full bg-gray-800 rounded-lg shadow-xl flex flex-col items-center justify-center p-4 border-2 border-purple-accent/30 hover:border-purple-accent transition duration-300 cursor-pointer group" data-slot="${slotId}">
+                                <i data-lucide="plus-circle" class="w-12 h-12 text-purple-500 mb-2 group-hover:scale-110 transition"></i>
+                                <p class="text-gray-400 font-medium text-sm">Rent Slot</p>
+                            </button>`;
+                        contentEl.querySelector('button').addEventListener('click', (e) => { e.stopPropagation(); openAdScheduler(slotId); });
+                        timerEl.textContent = "AVAILABLE FOR BOOKING";
+                        timerEl.className = "text-xs text-gray-500 mt-2";
+                    }
+                }
+            });
+            if (window.lucide) window.lucide.createIcons();
+        }
+        setInterval(updateSupremeAdsDisplay, 1000);
+
+        // --- Grid Logic (Strict Interleaving with Filters) ---
+        function renderGrid() {
+            const grid = document.getElementById('product-grid');
+            const category = document.getElementById('category-filter').value;
+            grid.innerHTML = "";
+
+            // 1. Strict Category Filter for BOTH types
+            const searchVal = document.getElementById('search-bar').value.toLowerCase();
+            const userAddress = (userProfile.address || "").toLowerCase();
+
+            let filteredNormal = allListings.filter(item => {
+                const matchesCategory = category === "All" || item.category === category;
+                const matchesSearch = !searchVal || item.title.toLowerCase().includes(searchVal) || item.description.toLowerCase().includes(searchVal);
+                const matchesNearMe = !filterNearMe || !userAddress || (item.address && item.address.toLowerCase().includes(userAddress)) || (item.description && item.description.toLowerCase().includes(userAddress));
+                return matchesCategory && matchesSearch && matchesNearMe;
+            });
+            let filteredMagnetic = magneticListings.filter(item => {
+                const matchesCategory = category === "All" || item.category === category;
+                const matchesSearch = !searchVal || item.title.toLowerCase().includes(searchVal) || item.description.toLowerCase().includes(searchVal);
+                const matchesNearMe = !filterNearMe || !userAddress || (item.address && item.address.toLowerCase().includes(userAddress)) || (item.description && item.description.toLowerCase().includes(userAddress));
+                return matchesCategory && matchesSearch && matchesNearMe;
+            });
+
+            let combinedList = [];
+            let magIndex = 0;
+
+            // 2. Logic: 3 Normal -> 1 Magnetic (of Same Category)
+            for (let i = 0; i < filteredNormal.length; i++) {
+                combinedList.push(filteredNormal[i]);
+                if ((i + 1) % 3 === 0) {
+                    if (magIndex < filteredMagnetic.length) {
+                        combinedList.push(filteredMagnetic[magIndex]);
+                        magIndex++;
+                    }
+                }
+            }
+
+            if (combinedList.length === 0) {
+                grid.innerHTML = '<p class="text-gray-400 col-span-full text-center">No items found in this category.</p>';
+            } else {
+                const fragment = document.createDocumentFragment();
+                combinedList.forEach(item => fragment.appendChild(createProductCard(item.id, item, item.sellerId === currentUserId)));
+                grid.appendChild(fragment);
+            }
+            if (window.lucide) window.lucide.createIcons();
+        }
+        document.getElementById('category-filter').addEventListener('change', renderGrid);
+
+        function createProductCard(id, data, isMine = false) {
+            const div = document.createElement('div');
+            // Magnetic styling vs Normal
+            let borderClass = data.isMagnetic ? 'magnetic-glow' : 'shadow-lg border-gray-700 hover:border-purple-accent'; 
+            if (data.isGemBoosted) borderClass = 'gem-boosted-glow';
+
+            div.className = `listing-card bg-gray-800 rounded-lg overflow-hidden border transition duration-300 group cursor-pointer ${borderClass} relative flex flex-col`;
+
+            let buttonsHtml = '';
+
+            // Delete button logic: Admin OR Owner
+            if (userProfile.isAdmin || isMine) {
+                buttonsHtml += `<button class="delete-btn bg-red-600 hover:bg-red-700 text-white px-3 py-2 rounded transition ml-2" title="Delete Listing" data-id="${id}"><i data-lucide="trash-2" class="w-4 h-4"></i></button>`;
+            }
+
+            // Cart button logic: Not Mine AND Not Magnetic
+            if (!isMine && !data.isMagnetic) {
+                buttonsHtml = `<button class="add-cart-mini-btn bg-purple-600 hover:bg-purple-700 text-white px-3 py-2 rounded transition" title="Add to Cart"><i data-lucide="shopping-cart" class="w-4 h-4"></i></button>` + buttonsHtml;
+            }
+
+            const badge = data.isMagnetic ? '<span class="absolute top-2 left-2 bg-blue-600 text-xs px-2 py-1 rounded text-white font-bold flex items-center z-20 shadow-lg"><i data-lucide="zap" class="w-3 h-3 mr-1"></i> BOOSTED</span>' : (isMine ? '<span class="absolute top-2 right-2 bg-purple-600 text-xs px-2 py-1 rounded text-white font-bold shadow-lg">YOURS</span>' : '');
+
+            // Point 31: 3D View Check (Requirement: Images of all sides)
+            const is3D = (data.images && data.images.length >= 4) || (data.description && (data.description.toLowerCase().includes('3d') || data.description.toLowerCase().includes('360')));
+            const badge3d = is3D ? '<span class="absolute bottom-2 right-2 bg-green-500 text-[10px] px-2 py-0.5 rounded text-white font-bold z-20 shadow-lg flex items-center"><i data-lucide="box" class="w-3 h-3 mr-1"></i> 3D VIEW</span>' : '';
+
+            div.innerHTML = `
+                <div class="h-64 overflow-hidden relative">
+                    <img src="${data.image}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy">
+                    ${badge}
+                    ${badge3d}
+                </div>
+                <div class="p-4 flex flex-col flex-grow">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="font-bold text-lg truncate w-2/3">${data.title}</h3>
+                        <div class="flex flex-col items-end">
+                            <span class="text-purple-400 font-bold">${data.price ? (data.currency || '₹') + data.price : ''}</span>
+                            <div class="flex items-center text-yellow-500 text-xs font-bold">
+                                <i data-lucide="star" class="w-3 h-3 mr-1 fill-current"></i>
+                                <span>${data.starsCount || 0}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 text-sm mb-2 line-clamp-2 flex-grow">${data.description}</p>
+                    ${data.address ? `<div class="flex items-center text-xs text-gray-500 mb-2"><i data-lucide="map-pin" class="w-3 h-3 mr-1"></i> ${data.address}</div>` : ''}
+                    <div class="flex items-center mt-auto pt-2">
+                        <button class="flex-grow bg-gray-700 hover:bg-gray-600 text-white py-2 rounded transition details-btn text-sm font-medium">
+                            ${data.isAd ? 'View Ad Link' : 'View Details'}
+                        </button>
+                        ${buttonsHtml ? `<div class="flex ml-2">${buttonsHtml}</div>` : ''}
+                    </div>
+                </div>`;
+
+            // Listeners
+            if (div.querySelector('.add-cart-mini-btn'))
+                div.querySelector('.add-cart-mini-btn').addEventListener('click', (e) => { e.stopPropagation(); addToCart({ ...data, id: id }); });
+
+            div.querySelector('.details-btn').addEventListener('click', (e) => { e.stopPropagation(); if (data.isAd && data.link) window.open(data.link, '_blank'); else openProductDetail(id, data); });
+
+            // Card Click
+            div.addEventListener('click', (e) => {
+                if (!e.target.closest('button')) {
+                    if (data.isAd && data.link) window.open(data.link, '_blank');
+                    else openProductDetail(id, data);
+                }
+            });
+            return div;
+        }
+
+        // --- Details Modal Logic ---
+        async function openProductDetail(id, initialData) {
+            // Bolt Optimization: Grid view only provides thumbnail.
+            // Fetch full listing details (including all images for 3D) on demand.
+            let data = initialData;
+            try {
+                const fullData = await fetchAPI(`/listings/${id}`);
+                data = wrapData(fullData);
+                data.id = id;
+            } catch (e) {
+                console.error("Error fetching full details:", e);
+            }
+
+            const detailImg = document.getElementById('detail-image');
+            const detailImgContainer = detailImg.parentElement;
+            
+            // Reset Container for potential 3D View
+            detailImgContainer.innerHTML = '<img id="detail-image" src="" alt="Product Image" class="w-full h-full object-contain">';
+            const newDetailImg = document.getElementById('detail-image');
+            newDetailImg.src = data.image;
+
+            // 3D View Implementation (Requirement: Images of all sides)
+            
+            
+            
+            if (data.images && data.images.length >= 4) {
+                detailImgContainer.classList.add('ultra-3d-container');
+                newDetailImg.classList.add('ultra-3d-image');
+                
+                const depthLayer = document.createElement('div');
+                depthLayer.className = "ultra-depth-layer";
+                detailImgContainer.appendChild(depthLayer);
+
+                const viewer = document.createElement('div');
+                viewer.className = "absolute inset-0 z-30 flex flex-col items-center justify-center bg-transparent cursor-grab active:cursor-grabbing group";
+                viewer.innerHTML = `
+                    <div class="text-white text-[10px] bg-purple-600/70 px-3 py-1 rounded-full mb-2 font-bold animate-pulse shadow-[0_0_15px_rgba(168,85,247,0.5)] backdrop-blur-md pointer-events-none tracking-widest">NEXUS ULTRA-VISION 3D</div>
+                    <div class="text-[9px] text-gray-400 opacity-0 group-hover:opacity-100 transition uppercase tracking-[0.2em] pointer-events-none">Interactive Spatial Render</div>
+                `;
+                
+                let currentFrame = 0;
+                let startX = 0; let startY = 0;
+                const totalFrames = data.images.length;
+                
+                const updateView = (deltaX, deltaY, clientX, clientY) => {
+                    const rect = detailImgContainer.getBoundingClientRect();
+                    const x = ((clientX - rect.left) / rect.width) * 100;
+                    const y = ((clientY - rect.top) / rect.height) * 100;
+                    depthLayer.style.setProperty('--x', `${x}%`);
+                    depthLayer.style.setProperty('--y', `${y}%`);
+
+                    const frameDelta = Math.floor(deltaX / 10);
+                    let newFrame = (currentFrame + frameDelta) % totalFrames;
+                    if (newFrame < 0) newFrame += totalFrames;
+                    newDetailImg.src = data.images[newFrame];
+
+                    const rx = Math.max(-20, Math.min(20, (deltaY / rect.height) * 40));
+                    const ry = Math.max(-20, Math.min(20, (-deltaX / rect.width) * 40));
+                    newDetailImg.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg) scale(1.1) translateZ(30px)`;
+                };
+
+                const resetView = () => {
+                    newDetailImg.style.transform = `rotateX(0deg) rotateY(0deg) scale(1) translateZ(0)`;
+                };
+
+                viewer.addEventListener('mousedown', (e) => {
+                    startX = e.pageX; startY = e.pageY;
+                    const move = (me) => updateView(me.pageX - startX, me.pageY - startY, me.clientX, me.clientY);
+                    const stop = () => {
+                        document.removeEventListener('mousemove', move);
+                        document.removeEventListener('mouseup', stop);
+                        resetView();
+                    };
+                    document.addEventListener('mousemove', move);
+                    document.addEventListener('mouseup', stop);
+                });
+
+                viewer.addEventListener('touchstart', (e) => {
+                    const touch = e.touches[0];
+                    startX = touch.pageX; startY = touch.pageY;
+                    const move = (te) => {
+                        te.preventDefault();
+                        const t = te.touches[0];
+                        updateView(t.pageX - startX, t.pageY - startY, t.clientX, t.clientY);
+                    };
+                    const stop = () => {
+                        document.removeEventListener('touchmove', move);
+                        document.removeEventListener('touchend', stop);
+                        resetView();
+                    };
+                    document.addEventListener('touchmove', move, { passive: false });
+                    document.addEventListener('touchend', stop);
+                });
+
+                detailImgContainer.appendChild(viewer);
+            }
+
+
+
+
+            document.getElementById('detail-title').textContent = data.title;
+            document.getElementById('detail-price').textContent = `${data.currency || '₹'}${data.price || 0}`;
+            document.getElementById('detail-category').textContent = data.category;
+            document.getElementById('detail-condition').textContent = "Condition: " + (data.condition || "Not specified");
+            document.getElementById('detail-description').textContent = data.description;
+            document.getElementById('detail-seller-name').textContent = data.sellerName || "Unknown";
+            document.getElementById('detail-seller-pic').src = data.sellerPic || "https://placehold.co/40x40";
+
+            const phoneEl = document.getElementById('detail-phone');
+            const adminBanBtn = document.getElementById('admin-ban-btn');
+            const adminProfileBtn = document.getElementById('admin-view-profile-btn');
+
+            // Logic: Admin can see phone/profile. Regular users see name only (safe default).
+            if (userProfile.isAdmin || data.sellerId === currentUser.uid) {
+                phoneEl.textContent = "Contact: " + (data.phone || "Hidden");
+                phoneEl.classList.remove('hidden');
+
+                if (userProfile.isAdmin && data.sellerId !== currentUser.uid) {
+                    adminProfileBtn.classList.remove('hidden');
+                    
+                    if (userProfile.isPrimaryAdmin) {
+                        adminBanBtn.classList.remove('hidden');
+
+                        // Ban Handler
+                        const newBanBtn = adminBanBtn.cloneNode(true);
+                        adminBanBtn.parentNode.replaceChild(newBanBtn, adminBanBtn);
+                        newBanBtn.addEventListener('click', async () => {
+                            if (confirm("ADMIN: Permanently ban user and remove listing?")) {
+                                await deleteDoc(doc(db, 'artifacts', appId, 'public', 'data', 'listings', id));
+                                await setDoc(doc(db, 'artifacts', appId, 'users', data.sellerId, 'profile', 'data'), { banned: true }, { merge: true });
+                                showMessage("User Banned. Listing Deleted."); closeModal('product-detail-modal');
+                            }
+                        });
+                    }
+
+                    // View Profile Handler
+                    const newProfBtn = adminProfileBtn.cloneNode(true);
+                    adminProfileBtn.parentNode.replaceChild(newProfBtn, adminProfileBtn);
+                    newProfBtn.addEventListener('click', () => {
+                        alert(`ADMIN VIEW:\nID: ${data.sellerId}\nName: ${data.sellerName}\nPhone: ${data.phone}`);
+                    });
+                } else {
+                    adminBanBtn.classList.add('hidden');
+                    adminProfileBtn.classList.add('hidden');
+                }
+            } else {
+                phoneEl.classList.add('hidden');
+                adminBanBtn.classList.add('hidden');
+                adminProfileBtn.classList.add('hidden');
+            }
+
+            const actionContainer = document.getElementById('action-buttons-container');
+            actionContainer.innerHTML = "";
+
+            const quality_check_btn_el = document.createElement('button');
+            quality_check_btn_el.className = "w-full bg-blue-600 text-white py-2 rounded-lg text-sm font-semibold hover:bg-blue-700 transition duration-300 flex items-center justify-center space-x-2";
+            quality_check_btn_el.innerHTML = `<i data-lucide="shield-check" class="w-4 h-4"></i><span>Quality Check (AI)</span>`;
+            quality_check_btn_el.onclick = async () => {
+                showMessage("Check send to your notification icon.");
+                const priceOpinion = data.price < 1000 ? "Excellent competitive pricing." : (data.price > 5000 ? "High-end luxury valuation." : "Standard market rate detected.");
+                const imgOpinion = "Image verified as authentic and genuine Apperture stock.";
+                // Bolt Fix: Send as private notification to requester only
+                await fetchAPI('/notifications', 'POST', { 
+                    message: `Quality Check for ${data.title}:\n\nAI Opinion: ${priceOpinion}\nStatus: ${imgOpinion}\nVerdict: Recommended.`, 
+                    type: 'private',
+                    recipient_id: currentUserId
+                });
+            };
+
+            const offerBtn = document.createElement('button');
+            offerBtn.className = "w-full bg-teal-600 text-white py-2 rounded-lg text-sm font-semibold hover:bg-teal-700 transition duration-300 flex items-center justify-center space-x-2";
+            offerBtn.innerHTML = `<i data-lucide="banknote" class="w-4 h-4"></i><span>Negotiate Price</span>`;
+            offerBtn.onclick = async () => {
+                const offer = prompt("Enter your offer price (₹):");
+                const feedback = prompt("Write a feedback for price negotiation:");
+                if (offer && feedback) {
+                    await startChat(data.sellerId, data.sellerName || "Seller");
+                    // Send automated offer message
+                    await addDoc(collection(db, 'artifacts', appId, 'public', 'data', 'chats', currentChatId, 'messages'), { 
+                        text: `OFFER: ₹${offer}\nMESSAGE: ${feedback}`, 
+                        senderId: currentUser.uid, 
+                        timestamp: serverTimestamp() 
+                    });
+                }
+            };
+            
+            const starBtn = document.createElement('button'); 
+            starBtn.className = "w-full bg-yellow-600 text-white py-2 rounded-lg text-sm font-semibold hover:bg-yellow-700 transition duration-300 flex items-center justify-center space-x-2"; 
+            starBtn.innerHTML = `<i data-lucide="star" class="w-4 h-4"></i><span>Star Listing (Max 20)</span>`; 
+            starBtn.onclick = async () => { try { await fetchAPI(`/listings/${id}/star`, 'POST'); showMessage("Listing starred!"); } catch(e) { showMessage(e.message); } }; 
+
+            const chatBtn = document.createElement('button');
+            chatBtn.className = "w-full bg-purple-accent text-white py-2 rounded-lg text-sm hover:bg-purple-700 transition duration-300 font-semibold";
+            chatBtn.textContent = "Chat with Seller";
+            chatBtn.onclick = () => { startChat(data.sellerId, data.sellerName || "Seller"); };
+
+            actionContainer.appendChild(quality_check_btn_el); 
+            actionContainer.appendChild(offerBtn);
+            
+            actionContainer.appendChild(starBtn);
+            if (data.sellerId === currentUser.uid && !data.isMagnetic) {
+                const boostBtn = document.createElement('button');
+                boostBtn.className = "w-full bg-green-600 text-white py-2 rounded-lg text-sm font-bold flex items-center justify-center space-x-2 animate-pulse";
+                boostBtn.innerHTML = `<i data-lucide="zap" class="w-4 h-4"></i><span>Boost to Magnetic (15 Gems)</span>`;
+                boostBtn.onclick = async () => {
+                    try {
+                        await fetchAPI(`/listings/${id}/boost`, 'POST');
+                        showMessage("Listing boosted to Magnetic! It will now glow green.");
+                        closeModal('product-detail-modal');
+                        runSync();
+                    } catch(e) {
+                        showMessage(e.message);
+                    }
+                };
+                actionContainer.appendChild(boostBtn);
+            }
+
+            if (data.sellerId !== currentUser.uid) {
+                actionContainer.appendChild(chatBtn);
+
+                // Admin Donation (Requirement: Admin can donate by looking at listing)
+                if (userProfile.isAdmin) {
+                    const donateBtn = document.createElement('button');
+                    donateBtn.className = "w-full bg-red-600 text-white py-2 rounded-lg text-sm font-bold flex items-center justify-center space-x-2";
+                    donateBtn.innerHTML = `<i data-lucide="heart" class="w-4 h-4"></i><span>Admin: Donate Resources</span>`;
+                    donateBtn.onclick = async () => {
+                        const amountStr = prompt("ADMIN DONATION\nEnter amounts (stars,gems,tickets) separated by commas (e.g. 100,5,2):");
+                        if (amountStr) {
+                            const [s, g, t] = amountStr.split(',').map(v => parseInt(v.trim()) || 0);
+                            try {
+                                await fetchAPI('/admin/donate', 'POST', { target_user_id: data.sellerId, stars: s, gems: g, tickets: t });
+                                showMessage(`Successfully donated ${s} Stars, ${g} Gems, ${t} Tickets to ${data.sellerName}`);
+                            } catch(e) { showMessage(e.message); }
+                        }
+                    };
+                    actionContainer.appendChild(donateBtn);
+                }
+            }
+            if (window.lucide) window.lucide.createIcons();
+            openModal('product-detail-modal');
+        }
+
+        async function addToCart(item) {
+            await addDoc(collection(db, 'artifacts', appId, 'users', currentUser.uid, 'cart'), { listingId: item.id, title: item.title, price: item.price, image: item.image, addedAt: serverTimestamp() });
+            showMessage("Added to cart!");
+            if (document.getElementById('product-detail-modal').classList.contains('open')) closeModal('product-detail-modal');
+        }
+
+        // --- Listings Delete Logic (Event Delegation) ---
+        document.getElementById('product-grid').addEventListener('click', async (e) => {
+            const btn = e.target.closest('.delete-btn');
+            if (btn) {
+                e.stopPropagation();
+                if (confirm(userProfile.isAdmin ? "Admin: Force remove this listing?" : "Delete your listing?")) {
+                    await deleteDoc(doc(db, 'artifacts', appId, 'public', 'data', 'listings', btn.dataset.id));
+                    showMessage("Listing removed.");
+                }
+            }
+        });
+
+        document.getElementById('my-listings-container').addEventListener('click', async (e) => {
+            const btn = e.target.closest('.delete-btn');
+            if (btn) {
+                e.stopPropagation();
+                if (confirm("Delete your listing?")) {
+                    await deleteDoc(doc(db, 'artifacts', appId, 'public', 'data', 'listings', btn.dataset.id));
+                    showMessage("Listing removed.");
+                }
+            }
+        });
+
+        // --- Chat Logic ---
+        let myChats = [];
+
+        async function pollActiveChat() {
+            if (!currentChatId || document.hidden) return;
+            try {
+                const msgs_raw = await fetchAPI(`/chats/${currentChatId}/messages`);
+                const msgs = msgs_raw.map(wrapData);
+                const msgContainer = document.getElementById('chat-messages');
+                
+                // Optimized update: only if count changed
+                if (msgContainer.dataset.count != msgs.length) {
+                    msgContainer.innerHTML = "";
+                    msgs.forEach(msg => {
+                        const bubble = document.createElement('div');
+                        bubble.className = `chat-bubble ${msg.sender_id === currentUserId ? 'chat-bubble-sent' : 'chat-bubble-received'}`;
+                        bubble.textContent = msg.text; 
+                        msgContainer.appendChild(bubble);
+                    });
+                    msgContainer.scrollTop = msgContainer.scrollHeight;
+                    msgContainer.dataset.count = msgs.length;
+                }
+            } catch(e) {}
+        }
+
+        function updateChatContactListUI() {
+            const list = document.getElementById('chat-contact-list'); 
+            if (!list) return;
+            list.innerHTML = "";
+            myChats.forEach(data => {
+                const myIdx = data.participants.indexOf(currentUserId);
+                const otherIdx = myIdx === 0 ? 1 : 0;
+                const otherName = data.names ? data.names[otherIdx] : "Unknown";
+
+                const el = document.createElement('div'); 
+                el.className = "p-4 border-b border-gray-700 hover:bg-gray-700 cursor-pointer transition";
+                el.innerHTML = `<p class="font-bold text-white">${otherName}</p><p class="text-xs text-gray-400 truncate">${data.last_message || "Start chatting..."}</p>`;
+                el.addEventListener('click', () => openChatConversation(data.id, otherName));
+                list.appendChild(el);
+            });
+        }
+
+        window.startChat = async (sellerId, sellerName) => {
+            closeModal('product-detail-modal'); openModal('chat-modal');
+
+            try {
+                if (!myChats) myChats = [];
+
+                // Bolt Optimization: Instead of getDocs() which makes a network request,
+                // we use the locally cached myChats array from the sync data.
+                let foundChat = myChats.find(c => {
+                    if (sellerId === currentUser.uid) {
+                        return c.participants.length === 2 && c.participants[0] === c.participants[1];
+                    } else {
+                        return c.participants && c.participants.includes(sellerId) && c.participants.length === 2 && c.participants[0] !== c.participants[1];
+                    }
+                });
+
+                if (foundChat) {
+                    openChatConversation(foundChat.id, sellerName);
+                } else {
+                    const newChat = await addDoc(collection(db, 'artifacts', appId, 'public', 'data', 'chats'), {
+                        participants: [currentUser.uid, sellerId],
+                        names: [userProfile.name, sellerName],
+                        lastMessage: "Chat started",
+                        timestamp: serverTimestamp()
+                    });
+                    await runSync(); // Bolt Fix: Force sync to update contact list immediately
+                    openChatConversation(newChat.id, sellerName);
+                }
+            } catch (err) {
+                console.error("Error in startChat:", err);
+                showMessage("Failed to start chat: " + err.message);
+            }
+        };
+
+        function openChatConversation(chatId, otherName) {
+            currentChatId = chatId;
+            document.getElementById('chat-conversation-view').classList.remove('hidden'); 
+            document.getElementById('chat-conversation-view').classList.add('flex');
+            if (window.innerWidth < 768) { 
+                document.getElementById('chat-contact-list-container').classList.add('hidden'); 
+                document.getElementById('chat-back-btn-mobile').classList.remove('hidden'); 
+            }
+            document.getElementById('chat-header').classList.remove('hidden'); 
+            document.getElementById('chat-header').classList.add('flex');
+            document.getElementById('chat-input-area').classList.remove('hidden');
+            document.getElementById('chat-header-name').textContent = otherName;
+            
+            const msgContainer = document.getElementById('chat-messages');
+            msgContainer.dataset.count = 0; // Reset count to force immediate poll update
+            pollActiveChat();
+        }
+
+        document.getElementById('chat-back-btn-mobile').addEventListener('click', () => {
+            document.getElementById('chat-contact-list-container').classList.remove('hidden');
+            document.getElementById('chat-conversation-view').classList.add('hidden');
+            document.getElementById('chat-back-btn-mobile').classList.add('hidden');
+        });
+
+        document.getElementById('chat-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const input = userProfile.isAdmin ? document.getElementById('admin-message-input') : document.getElementById('user-message-select');
+            let text = input.value.trim();
+            if (!text || !currentChatId || !validateInput(text)) return;
+            text = applyAISecurity(text);
+
+            try {
+                await addDoc(collection(db, 'artifacts', appId, 'public', 'data', 'chats', currentChatId, 'messages'), { text: text, senderId: currentUser.uid, timestamp: serverTimestamp() });
+                await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'chats', currentChatId), { lastMessage: text, timestamp: serverTimestamp() }, { merge: true });
+                if (userProfile.isAdmin) input.value = "";
+            } catch (err) {
+                if (err.message && err.message.includes("Super Nexus")) {
+                    showMessage("⚠️ Security Block: " + err.message);
+                } else {
+                    showMessage(err.message || "Failed to send message.");
+                }
+            }
+        });
+
+        // --- Ad Schedulers ---
+
+        function showAdError(msg) {
+            const errEl = document.getElementById('ad-view-error');
+            errEl.textContent = msg;
+            errEl.classList.remove('hidden');
+            setTimeout(() => errEl.classList.add('hidden'), 5000);
+        }
+
+        // Notifications
+        document.getElementById('schedule-form-notifications').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            if (userProfile.banned) return;
+            let adCopy = document.getElementById('notif-copy-input').value.trim();
+            if (!validateInput(adCopy)) return;
+            
+            const btn = e.target.querySelector('button');
+            btn.disabled = true; btn.textContent = "Booking...";
+
+            try {
+                const res = await fetchAPI('/notifications', 'POST', {
+                    message: adCopy,
+                    type: 'user_ad'
+                });
+                closeAdScheduler(); 
+                const timeStr = res.scheduled_at ? new Date(res.scheduled_at * 1000).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) : "the sharp time";
+                showMessage(`Booking slot confirmed. Your notification will appear at sharp ${timeStr}.`);
+                loadUserProfile();
+            } catch (err) {
+                showAdError(err.message);
+            } finally {
+                btn.disabled = false; btn.textContent = "Broadcast (248 ₹)";
+            }
+        });
+
+        // Magnetic
+        const magFile = document.getElementById('magnetic-image');
+        const magPreview = document.getElementById('magnetic-preview');
+        let magBase64 = null;
+        if (magFile) magFile.addEventListener('change', () => { const f = magFile.files[0]; if (validateImage(f)) { const r = new FileReader(); r.onload = e => { magPreview.src = e.target.result; magPreview.classList.remove('hidden'); magBase64 = e.target.result; }; r.readAsDataURL(f); }  });
+
+        document.getElementById('schedule-form-magnetic').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            if (!currentUser || userProfile.banned || !magBase64) return;
+            const cat = document.getElementById('magnetic-category').value;
+            let desc = document.getElementById('magnetic-desc').value.trim();
+            if (!validateInput(desc)) return;
+            desc = applyAISecurity(desc);
+
+            // Ratio Check: 1 Mag for 3 Normal in category
+            const filteredNormal = allListings.filter(i => i.category === cat && !i.isMagnetic).length;
+            const filteredMag = magneticListings.filter(i => i.category === cat).length;
+
+            if (!userProfile.isAdmin && filteredMag >= Math.floor(filteredNormal / 3)) {
+                showAdError(`Slots full for ${cat}. Ratio 1:3 active. Need more normal items.`);
+                return;
+            }
+
+            try {
+                await addDoc(collection(db, 'artifacts', appId, 'public', 'data', 'listings'), {
+                    title: "Promoted: " + cat, category: cat, price: null, description: desc,
+                    image: magBase64, link: document.getElementById('magnetic-link').value.trim(), sellerId: currentUser.uid, sellerName: "Sponsor", timestamp: serverTimestamp(), isMagnetic: true, isAd: true
+                });
+                closeAdScheduler(); showMessage("Magnetic Listing Active.");
+            } catch (err) {
+                showAdError(err.message);
+            }
+        });
+
+        // Supreme
+        const supFile = document.getElementById('supreme-image');
+        const supPreview = document.getElementById('supreme-preview');
+        let supBase64 = null;
+        if (supFile) supFile.addEventListener('change', () => { const f = supFile.files[0]; if (validateImage(f)) { const r = new FileReader(); r.onload = e => { supPreview.src = e.target.result; supPreview.classList.remove('hidden'); supBase64 = e.target.result; }; r.readAsDataURL(f); }  });
+
+        document.getElementById('schedule-form-supreme').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            if (userProfile.banned || !supBase64) {
+                showAdError("Missing image or account blocked.");
+                return;
+            }
+
+            let title = document.getElementById('supreme-title').value.trim();
+            let copy = document.getElementById('supreme-ad-copy').value.trim();
+            if (!validateInput(title) || !validateInput(copy)) return;
+            
+            const btn = e.target.querySelector('button');
+            btn.disabled = true; btn.textContent = "Processing...";
+
+            try {
+                const res = await fetchAPI('/ads/supreme', 'POST', {
+                    title: title,
+                    category: document.getElementById('supreme-category').value,
+                    image_data: supBase64,
+                    ad_copy: copy
+                });
+
+                closeAdScheduler();
+                const startStr = res.start_time ? new Date(res.start_time * 1000).toLocaleString([], {month:'short', day:'numeric', hour: '2-digit', minute:'2-digit'}) : "the sharp time";
+                showMessage(`booking slots booked. Your Supreme Ad is reserved for 24 hours starting at sharp ${startStr}.`);
+                loadUserProfile();
+            } catch (err) {
+                showAdError(err.message);
+            } finally {
+                btn.disabled = false; btn.textContent = "Book Supreme (499 ₹)";
+            }
+        });
+
+        // --- Helpers ---
+        function updateMyScheduledAdsList() {
+            const container = document.getElementById('my-scheduled-ads-list');
+            if (myScheduledAds.length === 0) container.innerHTML = "<p>No active or scheduled campaigns found.</p>";
+            else {
+                container.innerHTML = "";
+                myScheduledAds.forEach(ad => {
+                    const el = document.createElement('div'); el.className = "flex justify-between border-b border-gray-700 pb-1";
+                    el.innerHTML = `<span>${ad.message.substring(0, 30)}...</span> <span class="${ad.status === 'Active' ? 'text-green-400' : 'text-yellow-400'} font-bold">${ad.status}</span>`;
+                    container.appendChild(el);
+                });
+            }
+        }
+
+        let lastChatCheckTime = parseInt(localStorage.getItem('lastChatCheckTime') || '0');
+        function updateNotificationDisplay() {
+            const countBadge = document.getElementById('notification-count');
+            const chatCountEl = document.getElementById('chat-notification-count');
+            
+            const now = Date.now() / 1000;
+            const visibleNotifs = allNotifications.filter(n => n.scheduled_for <= now);
+            const unreadNotifs = visibleNotifs.filter(n => n.scheduled_for > lastNotificationCheckTime).length;
+            
+            if (unreadNotifs > 0) {
+                countBadge.textContent = unreadNotifs;
+                countBadge.classList.remove('hidden');
+            } else {
+                countBadge.classList.add('hidden');
+            }
+            
+            const unreadChats = (typeof myChats !== 'undefined' ? myChats : []).filter(c => c.last_updated > lastChatCheckTime).length;
+            if (chatCountEl) {
+                if (unreadChats > 0) {
+                    chatCountEl.textContent = unreadChats;
+                    chatCountEl.classList.remove('hidden');
+                } else {
+                    chatCountEl.classList.add('hidden');
+                }
+            }
+        }
+
+        function updateNotificationModal() {
+            const list = document.getElementById('notification-list'); list.innerHTML = "";
+            const now = Date.now() / 1000;
+            const visibleNotifs = allNotifications.filter(n => n.scheduled_for <= now);
+            
+            if (visibleNotifs.length === 0) list.innerHTML = '<p class="text-gray-400 text-center py-4">No new announcements.</p>';
+            visibleNotifs.forEach(n => {
+                const isUnread = n.scheduled_for > parseInt(localStorage.getItem('lastReadTime') || '0');
+                const el = document.createElement('div'); el.className = `p-4 rounded-lg border ${isUnread ? 'bg-purple-900/40 border-purple-700' : 'bg-gray-800 border-gray-700'}`;
+                el.innerHTML = `<p class="font-bold text-lg mb-1 ${isUnread ? 'text-white' : 'text-purple-400'}">${n.type === 'admin_alert' ? 'OFFICIAL ALERT' : 'System Notification'}</p><p class="text-gray-300 text-sm whitespace-pre-wrap">${n.message}</p><p class="text-xs text-gray-500 mt-2">${new Date(n.scheduled_for * 1000).toLocaleString()}</p>`;
+                list.appendChild(el);
+            });
+        }
+
+        document.getElementById('notification-button').addEventListener('click', () => {
+            openModal('notification-modal');
+            const maxTs = allNotifications.reduce((max, n) => n.displayTime > max ? n.displayTime : max, 0);
+            if (maxTs > 0) localStorage.setItem('lastReadTime', maxTs.toString());
+            updateNotificationDisplay(); updateNotificationModal();
+        });
+
+        // Admin Notification
+        document.getElementById('admin-notif-send').addEventListener('click', async () => {
+            const text = document.getElementById('admin-notif-text').value.trim();
+            if (!text || !userProfile.isAdmin) return;
+            await addDoc(collection(db, 'artifacts', appId, 'public', 'data', 'notifications'), {
+                message: text, timestamp: serverTimestamp(), scheduledFor: serverTimestamp(), expiresAt: Timestamp.fromMillis(Date.now() + 86400000), type: 'admin_alert'
+            });
+            document.getElementById('admin-notif-text').value = ""; showMessage("Admin Alert Posted.");
+        });
+
+        function refreshIcons() { if (window.lucide) window.lucide.createIcons(); }
+        function showMessage(msg) { document.getElementById('message-body').textContent = msg; openModal('message-modal'); }
+        window.openModal = (id) => { document.getElementById(id).classList.remove('hidden'); setTimeout(() => { document.getElementById(id).classList.add('open'); refreshIcons(); }, 10); };
+        window.closeModal = (id) => { document.getElementById(id).classList.remove('open'); setTimeout(() => document.getElementById(id).classList.add('hidden'), 300); };
+
+        // Ad Scheduler Open
+        const openAdScheduler = (targetSlot = null) => {
+            document.getElementById('ad-scheduler-view').classList.remove('hidden'); updateMyScheduledAdsList();
+            const targetInput = document.getElementById('supreme-slot-target');
+            targetInput.value = targetSlot || "auto";
+        };
+        const closeAdScheduler = () => document.getElementById('ad-scheduler-view').classList.add('hidden');
+        document.getElementById('exit-ads-btn').addEventListener('click', closeAdScheduler);
+        document.getElementById('footer-ad-link').addEventListener('click', () => { if(checkVerification()) openAdScheduler(null); });
+
+        // Nav Links
+        document.querySelectorAll('.close-modal-btn').forEach(btn => btn.addEventListener('click', function () { closeModal(this.closest('.modal').id); }));
+        document.getElementById('cart-button').addEventListener('click', () => openModal('cart-modal'));
+        document.getElementById('footer-cart-btn').addEventListener('click', () => openModal('cart-modal'));
+        document.getElementById('profile-nav-link').addEventListener('click', () => openModal('profile-modal'));
+        document.getElementById('mobile-profile-link').addEventListener('click', () => openModal('profile-modal'));
+        document.getElementById('footer-profile-link').addEventListener('click', () => openModal('profile-modal'));
+        document.getElementById('sell-nav-link').addEventListener('click', () => {
+            document.getElementById('sell-special-cat').classList.toggle('hidden', !userProfile.isAdmin);
+            if(checkVerification()) { openModal('sell-modal'); refreshIcons(); }
+        });
+        document.getElementById('mobile-sell-link').addEventListener('click', () => { closeMobileMenu(); if(checkVerification()) { openModal('sell-modal'); refreshIcons(); } });
+        document.getElementById('mobile-ad-link').addEventListener('click', () => { closeMobileMenu(); if(checkVerification()) openAdScheduler(null); });
+        document.getElementById('mobile-recommended-link').addEventListener('click', () => { closeMobileMenu(); openModal('recommended-modal'); refreshIcons(); });
+
+        document.getElementById('footer-sell-link').addEventListener('click', () => openModal('sell-modal'));
+        document.getElementById('about-nav-link').addEventListener('click', () => openModal('about-modal'));
+        document.getElementById('mobile-about-link').addEventListener('click', () => openModal('about-modal'));
+        document.getElementById('footer-about-link').addEventListener('click', () => openModal('about-modal'));
+        document.getElementById('chat-nav-link').addEventListener('click', () => { 
+            openModal('chat-modal');
+            lastChatCheckTime = Date.now() / 1000;
+            localStorage.setItem('lastChatCheckTime', lastChatCheckTime);
+            updateNotificationDisplay();
+        });
+        document.getElementById('mobile-chat-link').addEventListener('click', () => {
+            openModal('chat-modal');
+            lastChatCheckTime = Date.now() / 1000;
+            localStorage.setItem('lastChatCheckTime', lastChatCheckTime);
+            updateNotificationDisplay();
+        });
+        document.getElementById('edit-profile-btn').addEventListener('click', () => { 
+            document.getElementById('edit-name').value = userProfile.name;
+            document.getElementById('edit-address').value = userProfile.address;
+            document.getElementById('edit-password').value = userProfile.password;
+            closeModal('profile-modal'); 
+            openModal('edit-profile-modal'); 
+        });
+        const welcomeModal = document.getElementById('welcome-modal');
+        if (welcomeModal) document.getElementById('accept-welcome-btn').addEventListener('click', () => welcomeModal.style.display = 'none');
+
+
+        // Debounce helper
+        function debounce(func, wait) {
+            let timeout;
+            return function(...args) {
+                clearTimeout(timeout);
+                timeout = setTimeout(() => func.apply(this, args), wait);
+            };
+        }
+        document.getElementById('search-bar').addEventListener('input', debounce(renderGrid, 300));
+        
+        let filterNearMe = false;
+        document.getElementById('near-me-btn').addEventListener('click', function() {
+            filterNearMe = !filterNearMe;
+            this.classList.toggle('text-purple-accent', filterNearMe);
+            this.classList.toggle('text-gray-400', !filterNearMe);
+            renderGrid();
+        });
+
+        document.getElementById('voice-search-btn').addEventListener('click', () => {
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            if (!SpeechRecognition) {
+                showMessage("Speech Recognition is not supported in your browser.");
+                return;
+            }
+
+            const recognition = new SpeechRecognition();
+            recognition.lang = 'en-US';
+            recognition.interimResults = false;
+            recognition.maxAlternatives = 1;
+
+            showMessage("Voice Search Active: Please speak now...");
+            recognition.start();
+
+            recognition.onresult = (event) => {
+                const transcript = event.results[0][0].transcript;
+                document.getElementById('search-bar').value = transcript;
+                renderGrid();
+                showMessage(`Voice Search: "${transcript}"`);
+            };
+
+            recognition.onerror = (event) => {
+                console.error("Speech recognition error:", event.error);
+                showMessage("Voice Search Error: " + event.error);
+            };
+        });
+
+        // Image Search Implementation
+        const imageSearchInput = document.createElement('input');
+        imageSearchInput.type = 'file';
+        imageSearchInput.accept = 'image/*';
+        imageSearchInput.className = 'hidden';
+        document.body.appendChild(imageSearchInput);
+
+        document.getElementById('image-search-btn').addEventListener('click', () => {
+            imageSearchInput.click();
+        });
+
+        imageSearchInput.addEventListener('change', async () => {
+            if (imageSearchInput.files.length > 0) {
+                const file = imageSearchInput.files[0];
+                showMessage(`AI Visual Search: Analyzing "${file.name}"...`);
+                
+                // Simulate AI processing delay
+                setTimeout(() => {
+                    // Logic: Filter to a random relevant category to simulate a match
+                    const categories = ["Sneakers", "Apparel / Clothes", "Accessories", "Bags"];
+                    const randomMatch = categories[Math.floor(Math.random() * categories.length)];
+                    
+                    document.getElementById('category-filter').value = randomMatch;
+                    renderGrid();
+                    showMessage(`Visual Match Found: Displaying ${randomMatch} collection.`);
+                }, 1500);
+            }
+        });
+
+        window.addEventListener('scroll', () => {
+            const btn = document.getElementById('go-to-bottom');
+            if (window.scrollY > 500 && window.scrollY < document.body.scrollHeight - 1000) {
+                btn.classList.remove('hidden');
+            } else {
+                btn.classList.add('hidden');
+            }
+        });
+
+        // Rewards Logic (Requirement 29)
+        document.getElementById('rewards-btn').addEventListener('click', async () => {
+            const status = await fetchAPI('/daily-rewards');
+            const grid = document.getElementById('rewards-grid');
+            grid.innerHTML = '';
+            const rewards = [
+                { day: 'Mon', prize: '30 Stars', icon: 'star', color: 'yellow' },
+                { day: 'Tue', prize: '80 Stars', icon: 'star', color: 'yellow' },
+                { day: 'Wed', prize: '300 Stars', icon: 'star', color: 'yellow' },
+                { day: 'Thu', prize: '2 Tickets', icon: 'ticket', color: 'blue' },
+                { day: 'Fri', prize: '1 Gem', icon: 'gem', color: 'green' },
+                { day: 'Sat', prize: '500S+1G', icon: 'zap', color: 'purple' },
+                { day: 'Sun', prize: '1 Gem', icon: 'gem', color: 'green' }
+            ];
+            
+            rewards.forEach((r, i) => {
+                const isClaimed = i < status.streak;
+                const isToday = i === status.streak && status.available;
+                
+                const el = document.createElement('div');
+                el.className = `p-2 border rounded flex flex-col items-center justify-center space-y-1 transition duration-500 ${isClaimed ? 'bg-yellow-600/40 border-yellow-400 scale-95 opacity-60' : 'bg-gray-800 border-gray-700'} ${isToday ? 'border-yellow-400 ring-2 ring-yellow-500 ring-offset-2 ring-offset-gray-900 animate-pulse' : ''}`;
+                
+                el.innerHTML = `
+                    <span class="text-[10px] font-bold uppercase ${isToday ? 'text-yellow-400' : 'text-gray-500'}">${r.day}</span>
+                    <i data-lucide="${r.icon}" class="w-5 h-5 text-${r.color}-500"></i>
+                    <span class="text-[9px] font-bold text-white whitespace-nowrap">${r.prize}</span>
+                `;
+                grid.appendChild(el);
+            });
+            
+            document.getElementById('claim-reward-btn').disabled = !status.available;
+            document.getElementById('claim-reward-btn').textContent = status.available ? "Claim Today's Reward" : "Already Claimed / Missed Day";
+            
+            if(checkVerification()) openModal('rewards-modal');
+            if (window.lucide) window.lucide.createIcons();
+        });
+
+        document.getElementById('claim-reward-btn').addEventListener('click', async () => {
+            try {
+                const res = await fetchAPI('/daily-rewards', 'POST');
+                showMessage(`Claimed: ${res.reward}! Streak: ${res.streak}`);
+                closeModal('rewards-modal');
+            } catch(e) { showMessage(e.message); }
+        });
+
+        // Wheel Logic (Requirement 27)
+        const initWheel = () => {
+            const svg = document.getElementById('wheel-svg');
+            if (svg.children.length > 0) return;
+
+            const prizes = [
+                "40 S", "40 S", "40 S", "40 S", "40 S", 
+                "10 S", "10 S", "10 S", 
+                "200 S", "200 S",
+                "1 G", "1 G", "1 G", "1 G", "1 G",
+                "1G+30S", "1G+30S", "1G+30S", "1G+30S", "1G+30S",
+                "1 T", "1 T", "1 T",
+                "JACKPOT", "JACKPOT"
+            ];
+
+            const centerX = 50; const centerY = 50; const radius = 48;
+            const step = 360 / 25;
+
+            prizes.forEach((p, i) => {
+                const startAngle = i * step;
+                const endAngle = (i + 1) * step;
+                
+                // SVG Path for segment
+                const x1 = centerX + radius * Math.cos((startAngle - 90) * Math.PI / 180);
+                const y1 = centerY + radius * Math.sin((startAngle - 90) * Math.PI / 180);
+                const x2 = centerX + radius * Math.cos((endAngle - 90) * Math.PI / 180);
+                const y2 = centerY + radius * Math.sin((endAngle - 90) * Math.PI / 180);
+                
+                const pathData = `M ${centerX} ${centerY} L ${x1} ${y1} A ${radius} ${radius} 0 0 1 ${x2} ${y2} Z`;
+                
+                const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+                path.setAttribute("d", pathData);
+                
+                let color = i % 2 === 0 ? '#1e1b4b' : '#312e81'; // Deep Indigo
+                if (p === "JACKPOT") color = '#b45309'; // Gold/Amber
+                
+                path.setAttribute("fill", color);
+                path.setAttribute("stroke", "#000");
+                path.setAttribute("stroke-width", "0.2");
+                svg.appendChild(path);
+
+                // Label
+                const labelAngle = startAngle + (step / 2);
+                const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+                const textRadius = radius * 0.75;
+                const tx = centerX + textRadius * Math.cos((labelAngle - 90) * Math.PI / 180);
+                const ty = centerY + textRadius * Math.sin((labelAngle - 90) * Math.PI / 180);
+                
+                text.setAttribute("x", tx);
+                text.setAttribute("y", ty);
+                text.setAttribute("fill", "white");
+                text.setAttribute("font-size", "2.2");
+                text.setAttribute("font-weight", "900");
+                text.setAttribute("text-anchor", "middle");
+                text.setAttribute("transform", `rotate(${labelAngle}, ${tx}, ${ty})`);
+                text.textContent = p;
+                svg.appendChild(text);
+            });
+        };
+
+        document.getElementById('wheel-btn').addEventListener('click', () => {
+            document.getElementById('wheel-ticket-count').textContent = userProfile.isAdmin ? '∞' : (userProfile.tickets || 0);
+            initWheel();
+            if(checkVerification()) openModal('wheel-modal');
+        });
+
+        let currentRotation = 0;
+        document.getElementById('spin-btn').addEventListener('click', async () => {
+            if (userProfile.tickets < 1 && !userProfile.isAdmin) {
+                return showMessage("Insufficient tickets! Collect daily rewards to get more.");
+            }
+
+            const btn = document.getElementById('spin-btn');
+            const wheelSvg = document.getElementById('wheel-svg');
+            const pointer = document.getElementById('wheel-pointer-container');
+            
+            btn.disabled = true;
+            btn.classList.add('opacity-50', 'cursor-not-allowed');
+
+            try {
+                const res = await fetchAPI('/wheel/spin', 'POST');
+                
+                // Calculate precise landing: Each segment is 14.4 degrees.
+                // res.slot_index is the segment index from the backend.
+                // We want segment X to land at the TOP (0 degrees).
+                // Initial wheel has segment 0 at 0-14.4 deg.
+                // Pointer is at 0 deg.
+                // To bring segment X to 0 deg, we rotate by -(X * 14.4 + 7.2) degrees.
+                // + 7.2 to land in the MIDDLE of the segment.
+                
+                const segmentAngle = 360 / 25;
+                const targetAngle = (res.slot_index * segmentAngle) + (segmentAngle / 2);
+                
+                // Add 5-8 full spins for excitement
+                const extraSpins = (5 + Math.floor(Math.random() * 3)) * 360;
+                
+                // Total rotation (Clockwise)
+                // To bring segment X to top, we need to rotate (360 - targetAngle)
+                const finalRotation = currentRotation + extraSpins + (360 - (targetAngle % 360));
+                currentRotation = finalRotation;
+
+                wheelSvg.style.transform = `rotate(${finalRotation}deg)`;
+                
+                // Pointer Tick Effect
+                let lastTickAngle = 0;
+                const tickInterval = setInterval(() => {
+                    const style = window.getComputedStyle(wheelSvg);
+                    const matrix = new DOMMatrixReadOnly(style.transform);
+                    const angle = Math.atan2(matrix.b, matrix.a) * (180 / Math.PI);
+                    const normalizedAngle = (angle + 360) % segmentAngle;
+                    
+                    if (normalizedAngle < lastTickAngle) {
+                        // We crossed a line
+                        pointer.style.transform = 'translateX(-50%) rotate(-15deg)';
+                        setTimeout(() => pointer.style.transform = 'translateX(-50%) rotate(0deg)', 50);
+                    }
+                    lastTickAngle = normalizedAngle;
+                }, 50);
+
+                setTimeout(() => {
+                    clearInterval(tickInterval);
+                    pointer.style.transform = 'translateX(-50%) rotate(0deg)';
+                    
+                    const isJackpot = res.prize.includes("JACKPOT");
+                    if (isJackpot) {
+                        confettiAnimation();
+                        wheelSvg.parentElement.classList.add('animate-pulse', 'ring-4', 'ring-yellow-500');
+                    }
+                    
+                    showMessage(`🏆 WINNER!\nYou won: ${res.prize}`);
+                    
+                    btn.disabled = false;
+                    btn.classList.remove('opacity-50', 'cursor-not-allowed');
+                    loadUserProfile(); // Refresh balances
+                    
+                    if (isJackpot) {
+                        setTimeout(() => {
+                            wheelSvg.parentElement.classList.remove('animate-pulse', 'ring-4', 'ring-yellow-500');
+                        }, 3000);
+                    }
+                }, 5200);
+            } catch(e) {
+                showMessage(e.message);
+                btn.disabled = false;
+                btn.classList.remove('opacity-50', 'cursor-not-allowed');
+            }
+        });
+
+        function confettiAnimation() {
+            // Simple visual celebration
+            for (let i = 0; i < 50; i++) {
+                const c = document.createElement('div');
+                c.className = "fixed z-[100] w-2 h-2 rounded-full pointer-events-none";
+                c.style.left = Math.random() * 100 + "vw";
+                c.style.top = "-10px";
+                c.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+                document.body.appendChild(c);
+                c.animate([
+                    { transform: 'translateY(0) rotate(0deg)', opacity: 1 },
+                    { transform: `translateY(100vh) translateX(${Math.random()*200-100}px) rotate(${Math.random()*720}deg)`, opacity: 0 }
+                ], { duration: 2000 + Math.random() * 3000 });
+                setTimeout(() => c.remove(), 5000);
+            }
+        }
+
+        // Localization (Requirement 23)
+        const TRANSLATIONS = {
+            en: { title: "Define Your Apperture", shop: "Shop", sell: "Sell", profile: "Profile", home: "Home", about: "About", chat: "Chat", trending: "Trending Items", ourCollection: "Our Collection", rentSlot: "Rent Slot" },
+            hi: { title: "अपनी एपर्चर परिभाषित करें", shop: "दुकान", sell: "बेचें", profile: "प्रोफ़ाइल", home: "होम", about: "हमारे बारे में", chat: "चैट", trending: "ट्रेंडिंग आइटम", ourCollection: "हमारा संग्रह", rentSlot: "किराये पर स्थान" },
+            ta: { title: "உங்கள் அப்பர்ச்சரை வரையறுக்கவும்", shop: "கடை", sell: "விற்க", profile: "சுயவிவரம்", home: "முகப்பு", about: "பற்றி", chat: "அரட்டை", trending: "பிரபலமானவை", ourCollection: "எங்கள் சேகரிப்பு", rentSlot: "இடத்தை வாடகைக்கு எடுக்கவும்" },
+            mr: { title: "तुमची अपर्चर परिभाषित करा", shop: "दुकान", sell: "विक्री", profile: "प्रोफाइल", home: "मुख्यपृष्ठ", about: "माहिती", chat: "गप्पा", trending: "लोकप्रिय वस्तू", ourCollection: "आमचे संग्रह", rentSlot: "जागा भाड्याने घ्या" },
+            es: { title: "Define Tu Apperture", shop: "Tienda", sell: "Vender", profile: "Perfil", home: "Inicio", about: "Nosotros", chat: "Chat", trending: "Tendencias", ourCollection: "Nuestra Colección", rentSlot: "Alquilar Espacio" },
+            ru: { title: "Определите свою апертуру", shop: "Магазин", sell: "Продать", profile: "Профиль", home: "Главная", about: "О нас", chat: "Чат", trending: "Тренды", ourCollection: "Наша коллекция", rentSlot: "Арендовать слот" },
+            ca: { title: "Définissez votre ouverture", shop: "Boutique", sell: "Vendre", profile: "Profil", home: "Accueil", about: "À propos", chat: "Chat", trending: "Articles tendance", ourCollection: "Notre Collection", rentSlot: "Louer un espace" },
+            zh: { title: "定义您的孔径", shop: "商店", sell: "卖", profile: "个人资料", home: "首页", about: "关于", chat: "聊天", trending: "热门商品", ourCollection: "我们的系列", rentSlot: "租用广告位" }
+        };
+        let currentLang = 'en';
+        
+        function updateLanguage(lang) {
+            currentLang = lang;
+            const t = TRANSLATIONS[lang];
+            
+            // Header/Nav
+            document.querySelector('h1').textContent = t.title;
+            document.getElementById('home-nav-link').textContent = t.home;
+            document.getElementById('shop-nav-link').textContent = t.shop;
+            document.getElementById('sell-nav-link').textContent = t.sell;
+            document.getElementById('profile-nav-link').textContent = t.profile;
+            document.getElementById('chat-nav-link').textContent = t.chat;
+            document.getElementById('about-nav-link').textContent = t.about;
+            
+            // Sections
+            const trendingHeader = document.querySelector('#trending-section h2');
+            if (trendingHeader) trendingHeader.textContent = t.trending;
+            const shopHeader = document.querySelector('#shop-section h2');
+            if (shopHeader) shopHeader.textContent = t.ourCollection;
+            
+            // Footer links
+            document.getElementById('footer-sell-link').textContent = t.sell;
+            document.getElementById('footer-profile-link').textContent = t.profile;
+            document.getElementById('footer-about-link').textContent = t.about;
+
+            showMessage(`Language changed to ${lang.toUpperCase()}`);
+        }
+
+        document.getElementById('language-btn').addEventListener('click', () => {
+            openModal('language-modal');
+        });
+
+        document.querySelectorAll('.lang-opt-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const lang = btn.getAttribute('data-lang');
+                updateLanguage(lang);
+                closeModal('language-modal');
+            });
+        });
+
+        document.getElementById('guide-btn').addEventListener('click', () => openModal('guide-modal'));
+
+        document.getElementById('recommended-link').addEventListener('click', () => openModal('recommended-modal'));
+        document.getElementById('rec-search-btn').addEventListener('click', async () => {
+            const cat = document.getElementById('rec-category').value;
+            const name = document.getElementById('rec-name').value;
+            const results = await fetchAPI(`/listings/recommended?category=${cat}&name=${name}`);
+            const container = document.getElementById('rec-results');
+            container.innerHTML = '';
+            if (results.length === 0) container.innerHTML = '<p class="text-gray-400 text-center col-span-full">No highly starred items found.</p>';
+            results.forEach(item => {
+                const el = document.createElement('div');
+                el.className = "bg-gray-800 p-4 rounded border border-gray-700 flex items-center space-x-4";
+                el.innerHTML = `<img src="${item.image_data}" class="w-16 h-16 object-cover rounded"><div class="flex-grow"><p class="font-bold">${item.title}</p><p class="text-xs text-yellow-500">${item.stars_count} Stars</p></div>`;
+                container.appendChild(el);
+            });
+        });
+        
+        // Robust Initialization
+        function safeInit() {
+            console.log("SafeInit triggered");
+            if (typeof initApp === 'function') {
+                detectAPI().then(() => initApp()).then(() => {
+                    console.log("App Init Success");
+                    refreshIcons();
+                }).catch(err => {
+                    console.error("App Init Failed:", err);
+                });
+            }
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', safeInit);
+        } else {
+            safeInit();
+        }
+        
+        // Final fallback for icons
+        window.addEventListener('load', refreshIcons);
+
+        if (window.lucide) window.lucide.createIcons();
+    </script>
+</body>
+
+</html>
